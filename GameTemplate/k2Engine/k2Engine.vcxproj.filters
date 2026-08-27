@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{be505d70-91d3-424b-a445-5685d22f485c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="camera">
+      <UniqueIdentifier>{9a89f799-d7bf-47b8-bd87-315d3c7d0d60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nature">
+      <UniqueIdentifier>{0f811c27-ef1a-4c7a-a33d-6b4890e9f741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="level3DRender">
+      <UniqueIdentifier>{c0dd323f-9775-4217-8178-9ab457df52bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="level2DRender">
+      <UniqueIdentifier>{f1c1e7b1-a2da-4466-a50a-8201c631849c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="collision">
+      <UniqueIdentifier>{82315e07-0f58-4477-a304-86ab70241d6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geometry">
+      <UniqueIdentifier>{91130330-71ee-4430-980d-034ff3f51553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\postEffect">
+      <UniqueIdentifier>{3639925d-25c5-4b17-ba6c-de9ae59e9e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\preRender">
+      <UniqueIdentifier>{143cc97d-283c-4f50-a159-430f487221d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbg">
+      <UniqueIdentifier>{da4adfd3-066d-493e-8ff5-83d0147f941e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\light">
+      <UniqueIdentifier>{098d7f12-6f25-45fe-b2f2-3519670804f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="k2EnginePreCompile.cpp" />
+    <ClCompile Include="k2Engine.cpp" />
+    <ClCompile Include="graphics\FontRender.cpp" />
+    <ClCompile Include="graphics\IRenderer.cpp" />
+    <ClCompile Include="graphics\ModelRender.cpp" />
+    <ClCompile Include="graphics\RenderingEngine.cpp" />
+    <ClCompile Include="graphics\SpriteRender.cpp" />
+    <ClCompile Include="graphics\light\SceneLight.cpp" />
+    <ClCompile Include="nature\SkyCube.cpp" />
+    <ClCompile Include="graphics\postEffect\Bloom.cpp" />
+    <ClCompile Include="graphics\postEffect\Shadow.cpp" />
+    <ClCompile Include="collision\CollisionObject.cpp" />
+    <ClCompile Include="level3DRender\Level3DRender.cpp" />
+    <ClCompile Include="graphics\postEffect\Tone.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="k2EnginePreCompile.h" />
+    <ClInclude Include="k2Engine.h" />
+    <ClInclude Include="graphics\FontRender.h" />
+    <ClInclude Include="graphics\IRenderer.h" />
+    <ClInclude Include="graphics\ModelRender.h" />
+    <ClInclude Include="graphics\RenderingEngine.h" />
+    <ClInclude Include="graphics\SpriteRender.h" />
+    <ClInclude Include="graphics\light\SceneLight.h" />
+    <ClInclude Include="nature\SkyCube.h" />
+    <ClInclude Include="graphics\postEffect\Bloom.h" />
+    <ClInclude Include="graphics\postEffect\Shadow.h" />
+    <ClInclude Include="collision\CollisionObject.h" />
+    <ClInclude Include="level3DRender\Level3DRender.h" />
+    <ClInclude Include="graphics\postEffect\Tone.h" />
+  </ItemGroup>
+</Project>
