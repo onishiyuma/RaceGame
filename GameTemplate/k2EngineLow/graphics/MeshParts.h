@@ -6,6 +6,7 @@
 
 #include "tkFile/TkmFile.h"
 #include "StructuredBuffer.h"
+#include "MeshResource.h"
 
 namespace nsK2EngineLow {
 
@@ -22,10 +23,10 @@ namespace nsK2EngineLow {
 	/// メッシュ
 	/// </summary>
 	struct SMesh {
-		VertexBuffer m_vertexBuffer;						//頂点バッファ。
-		std::vector< IndexBuffer* >		m_indexBufferArray;	//インデックスバッファ。
-		std::vector< Material* >		m_materials;			//マテリアル。
-		std::vector<int>				skinFlags;				//スキンを持っているかどうかのフラグ。
+		std::shared_ptr<MeshResource> m_resource;//複数Modelで共有するメッシュデータ　追加（高橋）（IB/VB共有）
+
+		// マテリアルはModelごとに持つ
+		std::vector<Material*> m_materials;//マテリアルの配列。
 	};
 
 	/// <summary>
@@ -158,5 +159,9 @@ namespace nsK2EngineLow {
 		DescriptorHeap m_descriptorHeap;					//ディスクリプタヒープ。
 		Skeleton* m_skeleton = nullptr;						//スケルトン。
 		void* m_expandData = nullptr;						//ユーザー拡張データ。
+
+
+		//追加（高橋）（IB/VB共有）   
+		const TkmFile* m_tkmFile = nullptr;
 	};
 }

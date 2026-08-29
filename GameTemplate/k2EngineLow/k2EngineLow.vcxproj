@@ -332,6 +332,7 @@
     <ClCompile Include="tkFile\TksFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\k2Engine\MeshResource.h" />
     <ClInclude Include="AI\PathFinding\Cell.h" />
     <ClInclude Include="AI\PathFinding\NaviMesh.h" />
     <ClInclude Include="AI\PathFinding\Path.h" />

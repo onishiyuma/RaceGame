@@ -4,14 +4,25 @@
 #include "Material.h"
 #include "IndexBuffer.h"
 
+namespace
+{
+	using MeshResourceArray = std::vector<std::shared_ptr<nsK2EngineLow::MeshResource>>;
+
+	// NOTE:
+	// Bank自身がshared_ptrを保持しているため、Modelをすべて破棄しても
+	// MeshResourceは解放されず、基本的にアプリケーション終了まで保持される。
+
+	// TODO:
+	// 不要になったMeshResourceをBankから解放できる仕組みを追加する。
+
+	// メッシュリソースのバンク。tkmファイルのポインタをキーにして、メッシュリソースをまとめる。
+	std::unordered_map<const nsK2EngineLow::TkmFile*, MeshResourceArray> g_meshResourceBank;
+}
+
 namespace nsK2EngineLow {
 	MeshParts::~MeshParts()
 	{
 		for (auto& mesh : m_meshs) {
-			//インデックスバッファを削除。
-			for (auto& ib : mesh->m_indexBufferArray) {
-				delete ib;
-			}
 			//マテリアルを削除。
 			for (auto& mat : mesh->m_materials) {
 				delete mat;
@@ -36,6 +47,10 @@ namespace nsK2EngineLow {
 		D3D12_CULL_MODE cullMode
 	)
 	{
+
+		//tkmファイルのポインタを保持する。
+		m_tkmFile = &tkmFile;//追加（高橋）（IB/VB共有）
+
 		m_meshs.resize(tkmFile.GetNumMesh());
 		int meshNo = 0;
 		int materianNo = 0;
@@ -56,7 +71,7 @@ namespace nsK2EngineLow {
 				cullMode
 			);
 			meshNo++;
-		});
+			});
 		//共通定数バッファの作成。
 		m_commonConstantBuffer.Init(sizeof(SConstantBuffer), nullptr);
 		//ユーザー拡張用の定数バッファを作成。
@@ -134,53 +149,134 @@ namespace nsK2EngineLow {
 		bool isDepthTest,
 		D3D12_CULL_MODE cullMode
 	) {
-		//1. 頂点バッファを作成。
-		int numVertex = (int)tkmMesh.vertexBuffer.size();
-		int vertexStride = sizeof(TkmFile::SVertex);
-		auto mesh = new SMesh;
-		mesh->skinFlags.reserve(tkmMesh.materials.size());
-		mesh->m_vertexBuffer.Init(vertexStride * numVertex, vertexStride);
-		mesh->m_vertexBuffer.Copy((void*)&tkmMesh.vertexBuffer[0]);
 
-		auto SetSkinFlag = [&](int index) {
-			if (tkmMesh.vertexBuffer[index].skinWeights.x > 0.0f) {
-				//スキンがある。
-				mesh->skinFlags.push_back(1);
+		//変更、追加箇所 （高橋）（IB/VB共有）ここから//////////////////////////////////////////////////
+
+		//NOTE:
+		//無駄なGPUメモリを使わないように
+		//同じtkmなら頂点バッファ―とインデックスバッファーを共有する。
+		//なので新しいtkmのメッシュが来れば登録して、既存のtkmのメッシュが来ればそれを参照するだけにする。
+		//ただ、影モデルを作るときに同じモデルを使うけどマテリアルは変えるので
+		//マテリアルはtkmごとに共有しないで、メッシュごとに作る。
+
+		auto mesh = new SMesh;
+
+		// このTKM用のResource配列を取得
+		auto& resources = g_meshResourceBank[m_tkmFile];
+
+		if (resources.size() <= meshNo) {
+			resources.resize(meshNo + 1);
+		}
+
+		if (resources[meshNo] == nullptr) {
+			// まだ登録されていないメッシュならリソースを作成する
+
+
+			// 共有リソースを作成する。
+			auto resource = std::make_shared<MeshResource>();
+
+
+
+			/////////////////////////
+			// 頂点バッファを作成。
+			//////////////////////////
+
+			int numVertex = static_cast<int>(tkmMesh.vertexBuffer.size());
+			// 1頂点のバイト数を取得
+			int vertexStride = sizeof(TkmFile::SVertex);
+
+			resource->m_vertexBuffer.Init(
+				vertexStride * numVertex,
+				vertexStride
+			);
+
+			resource->m_vertexBuffer.Copy(
+				(void*)&tkmMesh.vertexBuffer[0]
+			);
+
+			auto SetSkinFlag = [&](int index) {
+				// その頂点がスキニングするかを判定する。スキニングする場合は1、しない場合は0を設定する。
+				if (tkmMesh.vertexBuffer[index].skinWeights.x > 0.0f) {
+
+					resource->m_skinFlags.push_back(1);
+				}
+				else {
+
+					resource->m_skinFlags.push_back(0);
+				}
+				};
+
+
+
+			///////////////////////////////
+			// インデックスバッファを作成。
+			///////////////////////////////
+
+			if (!tkmMesh.indexBuffer16Array.empty()) {
+				// インデックスのサイズが2byteなら
+
+
+				// インデックスバッファの配列のサイズを確保する。
+				resource->m_indexBufferArray.reserve(
+					tkmMesh.indexBuffer16Array.size()
+				);
+
+				for (auto& tkIb : tkmMesh.indexBuffer16Array) {
+
+					auto ib = new IndexBuffer;
+
+					ib->Init(
+						static_cast<int>(tkIb.indices.size()) * 2,
+						2
+					);
+
+					ib->Copy((uint16_t*)&tkIb.indices.at(0));
+
+					// スキンがあるかどうかを設定する。
+					SetSkinFlag(tkIb.indices[0]);
+
+					//リソースにインデックスバッファを登録する。
+					resource->m_indexBufferArray.push_back(ib);
+				}
 			}
 			else {
-				//スキンなし。
-				mesh->skinFlags.push_back(0);
-			}
-		};
-		//2. インデックスバッファを作成。
-		if (!tkmMesh.indexBuffer16Array.empty()) {
-			//インデックスのサイズが2byte
-			mesh->m_indexBufferArray.reserve(tkmMesh.indexBuffer16Array.size());
-			for (auto& tkIb : tkmMesh.indexBuffer16Array) {
-				auto ib = new IndexBuffer;
-				ib->Init(static_cast<int>(tkIb.indices.size()) * 2, 2);
-				ib->Copy((uint16_t*)&tkIb.indices.at(0));
+				// インデックスのサイズが4byteなら
 
-				//スキンがあるかどうかを設定する。
-				SetSkinFlag(tkIb.indices[0]);
 
-				mesh->m_indexBufferArray.push_back(ib);
+				// インデックスバッファの配列のサイズを確保する。
+				resource->m_indexBufferArray.reserve(
+					tkmMesh.indexBuffer32Array.size()
+				);
+
+				for (auto& tkIb : tkmMesh.indexBuffer32Array) {
+
+					auto ib = new IndexBuffer;
+
+					ib->Init(
+						static_cast<int>(tkIb.indices.size()) * 4,
+						4
+					);
+
+					ib->Copy(
+						(uint32_t*)&tkIb.indices.at(0)
+					);
+
+					SetSkinFlag(tkIb.indices[0]);
+
+					resource->m_indexBufferArray.push_back(ib);
+				}
 			}
+
+			// Bankへ保存
+			resources[meshNo] = resource;
 		}
-		else {
-			//インデックスのサイズが4byte
-			mesh->m_indexBufferArray.reserve(tkmMesh.indexBuffer32Array.size());
-			for (auto& tkIb : tkmMesh.indexBuffer32Array) {
-				auto ib = new IndexBuffer;
-				ib->Init(static_cast<int>(tkIb.indices.size()) * 4, 4);
-				ib->Copy((uint32_t*)&tkIb.indices.at(0));
 
-				//スキンがあるかどうかを設定する。
-				SetSkinFlag(tkIb.indices[0]);
+		// このModelは既存のResourceを参照するだけ
+		mesh->m_resource = resources[meshNo];
 
-				mesh->m_indexBufferArray.push_back(ib);
-			}
-		}
+
+		//ここまで//////////////////////////////////////////////////////////////
+
 		//3. マテリアルを作成。
 		mesh->m_materials.reserve(tkmMesh.materials.size());
 		for (auto& tkmMat : tkmMesh.materials) {
@@ -249,15 +345,15 @@ namespace nsK2EngineLow {
 		int descriptorHeapNo = 0;
 		for (auto& mesh : m_meshs) {
 			//1. 頂点バッファを設定。
-			rc.SetVertexBuffer(mesh->m_vertexBuffer);
+			rc.SetVertexBuffer(mesh->m_resource->m_vertexBuffer);
 			//マテリアルごとにドロー。
 			for (int matNo = 0; matNo < mesh->m_materials.size(); matNo++) {
 				//このマテリアルが貼られているメッシュの描画開始。
-				mesh->m_materials[matNo]->BeginRender(rc, mesh->skinFlags[matNo]);
+				mesh->m_materials[matNo]->BeginRender(rc, mesh->m_resource->m_skinFlags[matNo]);
 				//2. ディスクリプタヒープを設定。
 				rc.SetDescriptorHeap(m_descriptorHeap);
 				//3. インデックスバッファを設定。
-				auto& ib = mesh->m_indexBufferArray[matNo];
+				auto& ib = mesh->m_resource->m_indexBufferArray[matNo];
 				rc.SetIndexBuffer(*ib);
 
 				//4. ドローコールを実行。
