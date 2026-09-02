@@ -1,0 +1,41 @@
+# UnityCourseEditor 用
+# このファイルを GameTemplate/tools/UnityCourseEditor/.gitignore に置いてください。
+
+# Unity が各PCで生成するキャッシュ・一時ファイル
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Bb]uild/
+[Bb]uilds/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Visual Studio / IDE が生成するファイル
+.vs/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.csproj.DotSettings.user
+.vsconfig
+
+# OS が生成するファイル
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Assets/、Packages/、ProjectSettings/、*.meta は共有するため無視しません。
