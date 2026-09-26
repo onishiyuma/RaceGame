@@ -8,6 +8,7 @@
 using namespace nsK2EngineLow;
 #include "collision/CollisionObject.h"
 #include "graphics/RenderingEngine.h"
+#include "ResourceManager.h"
 #include "k2Engine.h"
 #include "graphics/IRenderer.h"
 #include "graphics/ModelRender.h"

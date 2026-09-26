@@ -45,6 +45,7 @@
     </ClCompile>
     <ClCompile Include="nature\SkyCube.cpp" />
     <ClCompile Include="graphics\postEffect\Tone.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="collision\CollisionObject.h" />
@@ -61,6 +62,7 @@
     <ClInclude Include="k2EnginePreCompile.h" />
     <ClInclude Include="nature\SkyCube.h" />
     <ClInclude Include="graphics\postEffect\Tone.h" />
+    <ClInclude Include="ResourceManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
