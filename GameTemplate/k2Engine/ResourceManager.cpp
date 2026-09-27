@@ -26,5 +26,21 @@ namespace nsK2Engine
 		return m_tkmFileBank.Get(filePath);
 	}
 
+	void ResourceManager::LoadTks(const char* filePath)
+	{
+		if (m_tksFileBank.Get(filePath) != nullptr) {
+			return;
+		}
+
+		auto* tksFile = new TksFile;
+		tksFile->Load(filePath);
+
+		m_tksFileBank.Regist(filePath, tksFile);
+	}
+
+	TksFile* ResourceManager::GetTks(const char* filePath)
+	{
+		return m_tksFileBank.Get(filePath);
+	}
 }
 

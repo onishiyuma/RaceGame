@@ -10,14 +10,16 @@ namespace nsK2Engine
 		/// <summary>
 		/// 通常描画用の初期化
 		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
+		/// <param name="tksFile">tksファイル</param>
+		/// <param name="tkmFile">tkmファイル</param>
 		/// <param name="animationClips">アニメーションクリップ</param>
 		/// <param name="numAnimationClips">アニメーションクリップの数</param>
 		/// <param name="enModelUpAxis">モデルの上方向</param>
 		/// <param name="isShadowCaster">trueなら影を描画する</param>
 		/// <param name="isShadowReceiver">trueなら影を受ける</param>
-		void Init(const char* filePath,
+		void Init(
 			TkmFile* tkmFile,
+			TksFile* tksFile,
 			AnimationClip* animationClips = nullptr,
 			int numAnimationClips = 0,
 			EnModelUpAxis enModelUpAxis = enModelUpAxisZ,
@@ -28,14 +30,16 @@ namespace nsK2Engine
 		/// <summary>
 		/// 半透明描画用の初期化
 		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
+		/// <param name="tkmFile">tkmファイル</param>
+		/// <param name="tksFile">tksファイル</param>
 		/// <param name="animationClips">アニメーションクリップ</param>
 		/// <param name="numAnimationClips">アニメーションクリップの数</param>
 		/// <param name="enModelUpAxis">モデルの上方向</param>
 		/// <param name="isShadowCaster">trueなら影を描画する</param>
 		/// <param name="isShadowReceiver">trueなら影を受ける</param>
-		void IniTranslucent(const char* filePath,
+		void IniTranslucent(
 			TkmFile* tkmFile,
+			TksFile* tksFile,
 			AnimationClip* animationClips = nullptr,
 			int numAnimationClips = 0,
 			EnModelUpAxis enModelUpAxis = enModelUpAxisZ,
@@ -211,8 +215,8 @@ namespace nsK2Engine
 		/// <summary>
 		/// スケルトンの初期化
 		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
-		void InitSkeleton(const char* filePath);
+		/// <param name="tksFile">tksファイル</param>
+		void InitSkeleton(TksFile* tksFile);
 
 		/// <summary>
 		/// アニメーションの初期化

@@ -4,8 +4,9 @@
 namespace nsK2Engine
 {
 	//通常描画用の初期化
-	void ModelRender::Init(const char* filePath,//ファイルパスはあとでなくす
+	void ModelRender::Init(
 		TkmFile* tkmFile,
+		TksFile* tksFile,
 		AnimationClip* animationClips,
 		int numAnimationClips,
 		EnModelUpAxis enModelUpAxis,
@@ -14,7 +15,7 @@ namespace nsK2Engine
 		AlphaBlendMode alphaBlendMode)
 	{
 		//スケルトンの初期化
-		InitSkeleton(filePath);
+		InitSkeleton(tksFile);
 		//アニメーションの初期化
 		InitAnimation(animationClips, numAnimationClips, enModelUpAxis);
 		//影を描画するなら
@@ -28,8 +29,9 @@ namespace nsK2Engine
 	}
 
 	//半透明描画用の初期化
-	void ModelRender::IniTranslucent(const char* filePath,
+	void ModelRender::IniTranslucent(
 		TkmFile* tkmFile,
+		TksFile* tksFile,
 		AnimationClip* animationClips,
 		int numAnimationClips,
 		EnModelUpAxis enModelUpAxis,
@@ -38,7 +40,7 @@ namespace nsK2Engine
 		AlphaBlendMode alphaBlendMode)
 	{
 		//スケルトンの初期化
-		InitSkeleton(filePath);
+		InitSkeleton(tksFile);
 		//アニメーションの初期化
 		InitAnimation(animationClips, numAnimationClips, enModelUpAxis);
 		//影を描画するなら
@@ -58,12 +60,11 @@ namespace nsK2Engine
 	}
 
 	//スケルトンの初期化
-	void ModelRender::InitSkeleton(const char* filePath)
+	void ModelRender::InitSkeleton(TksFile* tksFile)
 	{
-		std::string skeletonFilePath = filePath;
-		int pos = (int)skeletonFilePath.find(".tkm");
-		skeletonFilePath.replace(pos, 4, ".tks");
-		m_skeleton.Init(skeletonFilePath.c_str());
+		if (tksFile != nullptr) {
+			m_skeleton.Init(tksFile);
+		}
 	}
 
 	//アニメーションの初期化
@@ -166,7 +167,9 @@ namespace nsK2Engine
 	void ModelRender::Update()
 	{
 		//スケルトンを更新
-		m_skeleton.Update(m_model.GetWorldMatrix());
+		if (m_skeleton.IsInited()) {
+			m_skeleton.Update(m_model.GetWorldMatrix());
+		}
 
 		//モデルの更新
 		m_model.UpdateWorldMatrix(m_position, m_rotation, m_scale);
