@@ -34,9 +34,25 @@ namespace nsK2Engine
 		/// <param name="filePath"></param>
 		/// <returns></returns>
 		TksFile* GetTks(const char* filePath);
+
+		/// <summary>
+		/// Tkaファイルをロードする。すでにロード済みなら再ロードしない。
+		/// </summary>
+		/// <param name="filePath"></param>
+		void LoadTka(const char* filePath);
+
+		/// <summary>
+		/// ロード済みのTkaファイルを取得する。
+		/// ここでは絶対にロードしない。
+		/// </summary>
+		/// <param name="filePath"></param>
+		/// <returns></returns>
+		TkaFile* GetTka(const char* filePath);
+
 	private:
 		TResourceBank<TkmFile> m_tkmFileBank;
 		TResourceBank<TksFile> m_tksFileBank;
+		TResourceBank<TkaFile> m_tkaFileBank;
 	};
 }
 

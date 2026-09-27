@@ -42,5 +42,23 @@ namespace nsK2Engine
 	{
 		return m_tksFileBank.Get(filePath);
 	}
+
+	void ResourceManager::LoadTka(const char* filePath)
+	{
+		if (m_tkaFileBank.Get(filePath) != nullptr) {
+			return;
+		}
+
+		auto* tkaFile = new TkaFile;
+		tkaFile->Load(filePath);
+
+		m_tkaFileBank.Regist(filePath, tkaFile);
+	}
+
+	TkaFile* ResourceManager::GetTka(const char* filePath)
+	{
+		return m_tkaFileBank.Get(filePath);
+	}
+
 }
 
