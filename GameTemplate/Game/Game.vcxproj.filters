@@ -4,6 +4,12 @@
     <Filter Include="system">
       <UniqueIdentifier>{22dd8095-74f9-46df-81a1-36675a040b1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Stage">
+      <UniqueIdentifier>{1d0371c7-add8-45f7-b3e2-e6213756e1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stage\StageLoader">
+      <UniqueIdentifier>{9cb4b88e-7b23-4854-83f1-5b1808400666}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -16,6 +22,15 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h">
       <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageLoader\StageDefinition.h">
+      <Filter>Stage\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageLoader\StageLoader.h">
+      <Filter>Stage\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageLoader\TransformHelper.h">
+      <Filter>Stage\StageLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
