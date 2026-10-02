@@ -39,7 +39,7 @@ public static class StageObjectSetupTool
                             child.gameObject
                         );
 
-                    info.type = StageObjectType.Model;
+                    info.type = StageObjectType.Prop;
                 }
             }
         }
