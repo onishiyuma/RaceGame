@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum StageObjectType
 {
-    Model,
+    Prop,
     Coin,
     ItemBox,
     BoostPad,
@@ -15,5 +15,5 @@ public enum StageObjectType
 
 public class StageObjectInfo : MonoBehaviour
 {
-    public StageObjectType type = StageObjectType.Model;
+    public StageObjectType type = StageObjectType.Prop;
 }
