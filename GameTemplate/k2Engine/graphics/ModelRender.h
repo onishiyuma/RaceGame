@@ -10,8 +10,8 @@ namespace nsK2Engine
 		/// <summary>
 		/// 通常描画用の初期化
 		/// </summary>
-		/// <param name="tksFile">tksファイル</param>
-		/// <param name="tkmFile">tkmファイル</param>
+		/// <param name="tksFile">tkmファイル</param>
+		/// <param name="tkmFile">tksファイル</param>
 		/// <param name="animationClips">アニメーションクリップ</param>
 		/// <param name="numAnimationClips">アニメーションクリップの数</param>
 		/// <param name="enModelUpAxis">モデルの上方向</param>

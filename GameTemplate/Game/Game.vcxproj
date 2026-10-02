@@ -224,6 +224,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StageResourceLoader.cpp" />
     <ClCompile Include="Stage\StageAssetDatabase.cpp" />
     <ClCompile Include="Stage\StageLoader\StageLoader.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -234,6 +235,7 @@
     <ClCompile Include="system\system.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="StageResourceLoader.h" />
     <ClInclude Include="Stage\StageAssetDatabase.h" />
     <ClInclude Include="Stage\StageLoader\StageDefinition.h" />
     <ClInclude Include="Stage\StageLoader\StageLoader.h" />

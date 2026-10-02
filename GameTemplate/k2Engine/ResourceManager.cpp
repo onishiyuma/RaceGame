@@ -4,19 +4,26 @@
 namespace nsK2Engine
 {
 
-	void ResourceManager::LoadTkm(const char* filePath)
+	bool ResourceManager::LoadTkm(const char* filePath)
 	{
 		// すでにロード済みなら何もしない
 		if (GetTkm(filePath) != nullptr) {
-			return;
+			return true;
 		}
 
 		// ファイルをロード
 		auto* tkmFile = new TkmFile;
-		tkmFile->Load(filePath, false);
+
+		if (!tkmFile->Load(filePath, false))
+		{
+			delete tkmFile;
+			return false;
+		}
 
 		// Bankへ登録
 		m_tkmFileBank.Regist(filePath, tkmFile);
+
+		return true;
 	}
 
 	TkmFile* ResourceManager::GetTkm(const char* filePath)
@@ -26,16 +33,21 @@ namespace nsK2Engine
 		return m_tkmFileBank.Get(filePath);
 	}
 
-	void ResourceManager::LoadTks(const char* filePath)
+	bool ResourceManager::LoadTks(const char* filePath)
 	{
 		if (m_tksFileBank.Get(filePath) != nullptr) {
-			return;
+			return true;
 		}
 
 		auto* tksFile = new TksFile;
-		tksFile->Load(filePath);
+		if (!tksFile->Load(filePath))
+		{
+			delete tksFile;
+			return false;
+		}
 
 		m_tksFileBank.Regist(filePath, tksFile);
+		return true;
 	}
 
 	TksFile* ResourceManager::GetTks(const char* filePath)
@@ -43,16 +55,21 @@ namespace nsK2Engine
 		return m_tksFileBank.Get(filePath);
 	}
 
-	void ResourceManager::LoadTka(const char* filePath)
+	bool ResourceManager::LoadTka(const char* filePath)
 	{
 		if (m_tkaFileBank.Get(filePath) != nullptr) {
-			return;
+			return true;
 		}
 
 		auto* tkaFile = new TkaFile;
-		tkaFile->Load(filePath);
+		if (!tkaFile->Load(filePath))
+		{
+			delete tkaFile;
+			return false;
+		}
 
 		m_tkaFileBank.Regist(filePath, tkaFile);
+		return true;
 	}
 
 	TkaFile* ResourceManager::GetTka(const char* filePath)

@@ -41,6 +41,9 @@
     <ClInclude Include="Stage\StageLoader\TransformHelper.h">
       <Filter>Stage\StageLoader</Filter>
     </ClInclude>
+    <ClInclude Include="StageResourceLoader.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
     <ClInclude Include="Stage\StageAssetDatabase.h">
       <Filter>Stage</Filter>
     </ClInclude>
