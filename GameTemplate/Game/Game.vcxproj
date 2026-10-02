@@ -224,6 +224,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Stage\StageAssetDatabase.cpp" />
     <ClCompile Include="Stage\StageLoader\StageLoader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -233,6 +234,7 @@
     <ClCompile Include="system\system.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Stage\StageAssetDatabase.h" />
     <ClInclude Include="Stage\StageLoader\StageDefinition.h" />
     <ClInclude Include="Stage\StageLoader\StageLoader.h" />
     <ClInclude Include="Stage\StageLoader\TransformHelper.h" />

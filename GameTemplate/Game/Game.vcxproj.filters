@@ -17,6 +17,15 @@
     <ClCompile Include="system\system.cpp">
       <Filter>system</Filter>
     </ClCompile>
+    <ClCompile Include="Stage\StageLoader\StageLoader.cpp">
+      <Filter>Stage\StageLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="StageResourceLoader.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\StageAssetDatabase.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -31,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="Stage\StageLoader\TransformHelper.h">
       <Filter>Stage\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageAssetDatabase.h">
+      <Filter>Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

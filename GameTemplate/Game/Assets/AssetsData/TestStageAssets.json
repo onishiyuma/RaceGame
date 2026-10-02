@@ -1,0 +1,12 @@
+{
+    "UnityChan": {
+        "modelPath": "Assets/modelData/unityChan.tkm",
+        "skeletonPath": "Assets/modelData/unityChan.tks",
+        "animationPaths": [
+            "Assets/animData/idle.tka",
+            "Assets/animData/jump.tka",
+            "Assets/animData/run.tka",
+            "Assets/animData/walk.tka"
+        ]
+    }
+}
