@@ -133,17 +133,6 @@ public static class StageExporter
             return "";
         }
 
-        string assetPath =
-            AssetDatabase.GetAssetPath(mesh);
-
-        if (string.IsNullOrEmpty(assetPath))
-        {
-            return "";
-        }
-
-        string fileName =
-            Path.GetFileNameWithoutExtension(assetPath);
-
-        return fileName;
+        return mesh.name;
     }
 }
