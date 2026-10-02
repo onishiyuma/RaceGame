@@ -8,18 +8,14 @@
 
 namespace nsK2EngineLow {
 	AnimationClip::~AnimationClip()
-	{
-	}
+	{}
 
-	void AnimationClip::Load(const char* filePath)
+	void AnimationClip::Init(TkaFile* tkaFile)
 	{
-		m_tkaFile = g_engine->GetTkaFileFromBank(filePath);
-		if (m_tkaFile == nullptr) {
-			m_tkaFile = new TkaFile;
-			m_tkaFile->Load(filePath);
-			g_engine->RegistTkaFileToBank(filePath, m_tkaFile);
-		}
-		
+		K2_ASSERT(tkaFile != nullptr, "TKAがロードされていません");
+
+		m_tkaFile = tkaFile;
+
 		BuildKeyFramesAndAnimationEvents();
 	}
 
@@ -37,7 +33,7 @@ namespace nsK2EngineLow {
 				m_animationEvent[eventNo].SetInvokeTime(animEvent.invokeTime);
 				m_animationEvent[eventNo].SetEventName(wEventName);
 				eventNo++;
-			});
+				});
 
 		}
 		//キーフレーム情報の構築。
@@ -53,7 +49,7 @@ namespace nsK2EngineLow {
 				keyframe->transform.m[j][2] = tkaKeyFrame.transform[j].z;
 			}
 			m_keyframes.push_back(std::move(keyframe));
-		});
+			});
 		//ボーンインデックスごとのキーフレームの連結リストを作成する。
 		m_keyFramePtrListArray.resize(MAX_BONE);
 		for (auto& keyframe : m_keyframes) {

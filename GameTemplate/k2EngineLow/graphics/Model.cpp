@@ -11,11 +11,8 @@ namespace nsK2EngineLow {
 			"error : initData.m_fxFilePathが指定されていません。"
 		);
 		*/
-		K2_ASSERT(
-			initData.m_tkmFilePath,
-			"error : initData.m_tkmFilePathが指定されていません。"
-		);
 
+		K2_ASSERT(initData.m_tkmFile != nullptr, "TKMがロードされていません");
 
 		if (initData.m_skeleton != nullptr) {
 			//スケルトンが指定されている。
@@ -24,14 +21,9 @@ namespace nsK2EngineLow {
 
 		m_modelUpAxis = initData.m_modelUpAxis;
 
-		auto tkmFile = g_engine->GetTkmFileFromBank(initData.m_tkmFilePath);
-		if (tkmFile == nullptr) {
-			//未登録
-			tkmFile = new TkmFile;
-			tkmFile->Load(initData.m_tkmFilePath, false);
-			g_engine->RegistTkmFileToBank(initData.m_tkmFilePath, tkmFile);
-		}
-		m_tkmFile = tkmFile;
+
+		m_tkmFile = initData.m_tkmFile;
+
 		m_meshParts.InitFromTkmFile(
 			*m_tkmFile,
 			initData.m_fxFilePath,

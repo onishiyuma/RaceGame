@@ -67,7 +67,7 @@ namespace nsK2Engine
 		/// </summary>
 		/// <param name="filePath">tklファイルのファイルパス</param>
 		/// <param name="hookFunc"></param>
-		void Init(const char* filePath, std::function<bool(LevelObjectData& objData)> hookFunc);
+		void Init(const char* filePath, std::function<bool(nsK2EngineLow::LevelObjectData& objData) > hookFunc);
 
 		/// <summary>
 		/// モデルを描画
@@ -81,7 +81,7 @@ namespace nsK2Engine
 		/// </summary>
 		/// <param name="objData">レベルオブジェクトデータ</param>
 		/// <param name="filePath">ファイルパス</param>
-		void CreateMapChip(const LevelObjectData& objData, const char* filePath);
+		void CreateMapChip(const nsK2EngineLow::LevelObjectData& objData, const char* filePath);
 
 		/// <summary>
 		/// tklファイルの行列を変換する

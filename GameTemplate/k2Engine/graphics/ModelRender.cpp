@@ -4,7 +4,9 @@
 namespace nsK2Engine
 {
 	//通常描画用の初期化
-	void ModelRender::Init(const char* filePath,
+	void ModelRender::Init(
+		TkmFile* tkmFile,
+		TksFile* tksFile,
 		AnimationClip* animationClips,
 		int numAnimationClips,
 		EnModelUpAxis enModelUpAxis,
@@ -13,21 +15,23 @@ namespace nsK2Engine
 		AlphaBlendMode alphaBlendMode)
 	{
 		//スケルトンの初期化
-		InitSkeleton(filePath);
+		InitSkeleton(tksFile);
 		//アニメーションの初期化
 		InitAnimation(animationClips, numAnimationClips, enModelUpAxis);
 		//影を描画するなら
 		if (isShadowCaster)
 		{
 			//モデル(影描画)の初期化
-			InitShadowCasterDrawing(filePath, enModelUpAxis, alphaBlendMode);
+			InitShadowCasterDrawing(tkmFile, enModelUpAxis, alphaBlendMode);
 		}
 		//モデルの初期化
-		InitModel(filePath, enModelUpAxis, isShadowReceiver, alphaBlendMode);
+		InitModel(tkmFile, enModelUpAxis, isShadowReceiver, alphaBlendMode);
 	}
 
 	//半透明描画用の初期化
-	void ModelRender::IniTranslucent(const char* filePath,
+	void ModelRender::IniTranslucent(
+		TkmFile* tkmFile,
+		TksFile* tksFile,
 		AnimationClip* animationClips,
 		int numAnimationClips,
 		EnModelUpAxis enModelUpAxis,
@@ -36,17 +40,17 @@ namespace nsK2Engine
 		AlphaBlendMode alphaBlendMode)
 	{
 		//スケルトンの初期化
-		InitSkeleton(filePath);
+		InitSkeleton(tksFile);
 		//アニメーションの初期化
 		InitAnimation(animationClips, numAnimationClips, enModelUpAxis);
 		//影を描画するなら
 		if (isShadowCaster)
 		{
 			//モデル(影描画)の初期化
-			InitShadowCasterDrawing(filePath, enModelUpAxis, alphaBlendMode);
+			InitShadowCasterDrawing(tkmFile, enModelUpAxis, alphaBlendMode);
 		}
 		//モデルの初期化
-		InitModel(filePath, enModelUpAxis, isShadowReceiver, alphaBlendMode);
+		InitModel(tkmFile, enModelUpAxis, isShadowReceiver, alphaBlendMode);
 	}
 
 	//スカイキューブの初期化
@@ -56,12 +60,11 @@ namespace nsK2Engine
 	}
 
 	//スケルトンの初期化
-	void ModelRender::InitSkeleton(const char* filePath)
+	void ModelRender::InitSkeleton(TksFile* tksFile)
 	{
-		std::string skeletonFilePath = filePath;
-		int pos = (int)skeletonFilePath.find(".tkm");
-		skeletonFilePath.replace(pos, 4, ".tks");
-		m_skeleton.Init(skeletonFilePath.c_str());
+		if (tksFile != nullptr) {
+			m_skeleton.Init(tksFile);
+		}
 	}
 
 	//アニメーションの初期化
@@ -80,17 +83,17 @@ namespace nsK2Engine
 	}
 
 	//モデル(影描画)の初期化
-	void ModelRender::InitShadowCasterDrawing(const char* filePath, EnModelUpAxis enModelUpAxis, AlphaBlendMode alphaBlendMode)
+	void ModelRender::InitShadowCasterDrawing(TkmFile* tkmFile, EnModelUpAxis enModelUpAxis, AlphaBlendMode alphaBlendMode)
 	{
 		//モデルの初期化
 		ModelInitData shadowInitData;
-		//tkmファイルのファイルパスを指定
-		shadowInitData.m_tkmFilePath = filePath;
+		//tkmリソースを設定
+		shadowInitData.m_tkmFile = tkmFile;
 		//シェーダーファイルのファイルパスを指定
 		shadowInitData.m_fxFilePath = "Assets/shader/shadowMap.fx";
 		shadowInitData.m_vsEntryPointFunc = "VSMain";
 		shadowInitData.m_psEntryPointFunc = "PSShadowCaster";
-		
+
 		//アニメーションが設定されていたら
 		if (m_animationClips != nullptr)
 		{
@@ -115,12 +118,11 @@ namespace nsK2Engine
 	}
 
 	//モデルの初期化
-	void ModelRender::InitModel(const char* filePath, EnModelUpAxis enModelUpAxis, bool isShadowReceiver,AlphaBlendMode alphaBlendMode)
+	void ModelRender::InitModel(TkmFile* tkmFile, EnModelUpAxis enModelUpAxis, bool isShadowReceiver, AlphaBlendMode alphaBlendMode)
 	{
 		//モデルの初期化
 		ModelInitData modelInitData;
-		//tkmファイルのファイルパスを指定
-		modelInitData.m_tkmFilePath = filePath;
+		modelInitData.m_tkmFile = tkmFile;
 		//シェーダーファイルのファイルパスを指定
 		modelInitData.m_fxFilePath = "Assets/shader/model.fx";
 		modelInitData.m_vsEntryPointFunc = "VSMain";
@@ -165,7 +167,9 @@ namespace nsK2Engine
 	void ModelRender::Update()
 	{
 		//スケルトンを更新
-		m_skeleton.Update(m_model.GetWorldMatrix());
+		if (m_skeleton.IsInited()) {
+			m_skeleton.Update(m_model.GetWorldMatrix());
+		}
 
 		//モデルの更新
 		m_model.UpdateWorldMatrix(m_position, m_rotation, m_scale);

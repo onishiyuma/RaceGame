@@ -31,8 +31,7 @@ namespace nsK2EngineLow {
 		m_bones.reserve(BONE_MAX);
 	}
 	Skeleton::~Skeleton()
-	{
-	}
+	{}
 	void Skeleton::UpdateBoneWorldMatrix(Bone& bone, const Matrix& parentMatrix)
 	{
 		Matrix mBoneWorld;
@@ -44,22 +43,18 @@ namespace nsK2EngineLow {
 			UpdateBoneWorldMatrix(*childBone, mBoneWorld);
 		}
 	}
-	bool Skeleton::Init(const char* tksFilePath)
+	bool Skeleton::Init(TksFile* tksFile)
 	{
-		//tksファイルをロードする。
-		m_tksFile = g_engine->GetTksFileFromBank(tksFilePath);
-		if (m_tksFile == nullptr) {
-			// 新規。
-			m_tksFile = new TksFile;
-			// バンクに登録する。
-			g_engine->RegistTksFileToBank(tksFilePath, m_tksFile);
+		if (tksFile == nullptr) {
+			return false;
 		}
-		if (m_tksFile->Load(tksFilePath)) {
-			//ボーン行列を構築する。
-			BuildBoneMatrices();
-			return true;
-		}
-		return false;
+
+		m_tksFile = tksFile;
+
+		//ボーン行列を構築。
+		BuildBoneMatrices();
+
+		return true;
 	}
 	void Skeleton::BuildBoneMatrices()
 	{
@@ -94,7 +89,7 @@ namespace nsK2EngineLow {
 				invBindPoseMatrix,
 				tksBone.parentNo,
 				tksBone.no
-				);
+			);
 #if BUILD_LEVEL != BUILD_LEVEL_MASTER
 			//ボーンのバリデーションチェック。
 			//maxScriptでやりたいところではあるが、とりあえずこっち。
@@ -107,7 +102,7 @@ namespace nsK2EngineLow {
 			}
 #endif
 			m_bones.push_back(std::move(bone));
-		});
+			});
 		for (auto& bone : m_bones) {
 			if (bone->GetParentBoneNo() != -1) {
 				if (bone->GetParentBoneNo() > m_bones.size())

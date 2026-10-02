@@ -134,9 +134,6 @@
     <ClCompile Include="level3D\TklFile.cpp">
       <Filter>level3D</Filter>
     </ClCompile>
-    <ClCompile Include="level3D\Level.cpp">
-      <Filter>level3D</Filter>
-    </ClCompile>
     <ClCompile Include="level3D\MapChip.cpp">
       <Filter>level3D</Filter>
     </ClCompile>
@@ -225,6 +222,7 @@
     <ClCompile Include="graphics\FrameBuffer.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="LevelObjectData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="k2EngineLowPreCompile.h" />
@@ -384,9 +382,6 @@
     <ClInclude Include="level3D\TklFile.h">
       <Filter>level3D</Filter>
     </ClInclude>
-    <ClInclude Include="level3D\Level.h">
-      <Filter>level3D</Filter>
-    </ClInclude>
     <ClInclude Include="level3D\MapChip.h">
       <Filter>level3D</Filter>
     </ClInclude>
@@ -502,6 +497,7 @@
     <ClInclude Include="..\k2Engine\MeshResource.h">
       <Filter>graphics</Filter>
     </ClInclude>
+    <ClInclude Include="LevelObjectData.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="graphics">

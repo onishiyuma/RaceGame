@@ -12,7 +12,7 @@ namespace nsK2EngineLow {
 	class MapChip : public Noncopyable
 	{
 	public:
-		MapChip(const LevelObjectData& objData, const char* filePath);
+		MapChip(const LevelObjectData& objData, TkmFile* tkmFile);
 		~MapChip()
 		{
 		}

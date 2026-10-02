@@ -3,14 +3,14 @@
  */
 #include "k2EngineLowPreCompile.h"
 #include "MapChip.h"
-#include "Level.h"
+#include "LevelObjectData.h"
 
 namespace nsK2EngineLow {
-	MapChip::MapChip(const LevelObjectData& objData, const char* filePath)
+	MapChip::MapChip(const LevelObjectData& objData, TkmFile* tkmFile)
 	{
 		ModelInitData initData;
-		//tkmファイルのファイルパスを指定する。
-		initData.m_tkmFilePath = filePath;
+		//tkmリソースを設定
+		initData.m_tkmFile = tkmFile;
 		//シェーダーファイルのファイルパスを指定する。
 		initData.m_fxFilePath = "Assets/shader/model.fx";
 		//ノンスキンメッシュ用の頂点シェーダーのエントリーポイントを指定する。
