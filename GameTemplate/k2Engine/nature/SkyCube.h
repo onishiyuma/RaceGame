@@ -29,6 +29,13 @@ namespace nsK2Engine
 	/// </summary>
 	class SkyCube : public IGameObject
 	{
+
+		/// <summary>
+		/// このクラスを使うときは必ずどこかで        
+		/// g_resourceManager->LoadTkm("Assets/modelData/preset/sky.tkm");
+		/// を呼び出してから使って。
+		/// </summary>
+
 	public:
 		SkyCube(); //コンストラクタ
 		~SkyCube(); //デストラクタ

@@ -174,9 +174,9 @@ namespace nsK2EngineLow {
 		/// <summary>
 		/// 初期化。
 		/// </summary>
-		/// <param name="tksFilePath">tksファイルのファイルパス</param>
+		/// <param name="tksFile">tksファイル</param>
 		/// <returns>trueが返ってきたらロード成功。</returns>
-		bool Init(const char* tksFilePath);
+		bool Init(TksFile* tksFile);
 
 		/// <summary>
 		/// 初期化済みか判定。

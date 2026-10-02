@@ -29,8 +29,8 @@ namespace nsK2Engine {
 		/// <summary>
 		/// コンストラクタ。
 		/// </summary>
-		
-		K2Engine(){}
+
+		K2Engine() {}
 		/// <summary>
 		/// デストラクタ。
 		/// </summary>
@@ -82,6 +82,7 @@ namespace nsK2Engine {
 		CollisionObjectManager m_collisionObjectManager;	// 
 		RenderingEngine m_renderingEngine;					// レンダリングエンジン。
 		static K2Engine* m_instance;
+		ResourceManager m_resourceManager;	//追加（高橋）
 	};
 
 	// グローバルなアクセスポイント。
@@ -89,5 +90,5 @@ namespace nsK2Engine {
 	extern RenderingEngine* g_renderingEngine;
 	extern SceneLight* g_sceneLight;
 	extern CollisionObjectManager* g_collisionObjectManager;
-
+	extern ResourceManager* g_resourceManager;  //追加（高橋）
 }

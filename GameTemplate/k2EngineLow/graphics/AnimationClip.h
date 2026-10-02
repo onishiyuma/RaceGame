@@ -92,18 +92,17 @@ namespace nsK2EngineLow {
 		/// コンストラクタ
 		/// </summary>
 		AnimationClip()
-		{
-		}
-		
+		{}
+
 		/// <summary>
 		/// デストラクタ。
 		/// </summary>
 		~AnimationClip();
 		/// <summary>
-		/// アニメーションクリップを同期ロード。
+		/// ロード済みのTKAファイルから初期化。
 		/// </summary>
-		/// <param name="filePath"></param>
-		void Load(const char* filePath);
+		/// <param name="tkaFile">TKAファイル</param>
+		void Init(TkaFile* tkaFile);
 
 		/// <summary>
 		/// キーフレームとアニメーションイベントを構築する。
@@ -137,7 +136,7 @@ namespace nsK2EngineLow {
 		{
 			return *m_topBoneKeyFramList;
 		}
-		
+
 		/// <summary>
 		/// クリップ名を取得。
 		/// </summary>
@@ -146,7 +145,7 @@ namespace nsK2EngineLow {
 		{
 			return m_clipName.c_str();
 		}
-		
+
 		/// <summary>
 		/// アニメーションイベントを取得。
 		/// </summary>
@@ -173,7 +172,7 @@ namespace nsK2EngineLow {
 		std::unique_ptr<AnimationEvent[]>	m_animationEvent;			//アニメーションイベント。
 		int									m_numAnimationEvent = 0;	//アニメーションイベントの数。
 		keyFramePtrList* m_topBoneKeyFramList = nullptr;
-		TkaFile*							m_tkaFile = nullptr;		//tkaファイル
+		TkaFile* m_tkaFile = nullptr;		//tkaファイル
 	};
 	using AnimationClipPtr = std::unique_ptr<AnimationClip>;
 }

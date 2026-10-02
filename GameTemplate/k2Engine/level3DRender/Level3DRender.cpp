@@ -21,17 +21,30 @@ namespace nsK2Engine
 	}
 
 	//マップチップを作成
-	void Level3DRender::CreateMapChip(const LevelObjectData& objData, const char* filePath)
+	void Level3DRender::CreateMapChip(const nsK2EngineLow::LevelObjectData& objData, const char* filePath)
 	{
-		//フックされなかったので、マップチップを作成する。
-		auto mapChipRender = std::make_shared<MapChip>(objData, filePath);
+		nsK2EngineLow::TkmFile* tkmFile =
+			g_resourceManager->GetTkm(filePath);
+
+		K2_ASSERT(
+			tkmFile != nullptr,
+			"Level3DRender::CreateMapChip : TKM is not loaded.",
+			0
+		);
+
+		auto mapChipRender =
+			std::make_shared<nsK2EngineLow::MapChip>(
+				objData,
+				tkmFile
+			);
+
 		m_mapChipPtrs.push_back(mapChipRender);
 	}
 
 	//初期化
 	void Level3DRender::Init(
 		const char* filePath,
-		std::function<bool(LevelObjectData& objData)> hookFunc
+		std::function<bool(nsK2EngineLow::LevelObjectData& objData) > hookFunc
 	)
 	{
 		//tklファイルをロードする
@@ -46,7 +59,7 @@ namespace nsK2Engine
 
 				//マップチップを作成する。
 				//行列からポジションを作成する。
-				LevelObjectData levelObjData;
+				nsK2EngineLow::LevelObjectData levelObjData;
 				bone->CalcWorldTRS(levelObjData.position, levelObjData.rotation, levelObjData.scale);
 
 				//ZupとYupの変更。

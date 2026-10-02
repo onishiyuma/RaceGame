@@ -306,9 +306,9 @@
     <ClCompile Include="level2D\CaslFile.cpp" />
     <ClCompile Include="level2D\Level2D.cpp" />
     <ClCompile Include="level2D\MapChip2D.cpp" />
-    <ClCompile Include="level3D\Level.cpp" />
     <ClCompile Include="level3D\MapChip.cpp" />
     <ClCompile Include="level3D\TklFile.cpp" />
+    <ClCompile Include="LevelObjectData.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="math\Vector.cpp" />
     <ClCompile Include="online\SyncOnlineTwoPlayerMatchEngine.cpp" />
@@ -394,9 +394,9 @@
     <ClInclude Include="level2D\CaslFile.h" />
     <ClInclude Include="level2D\Level2D.h" />
     <ClInclude Include="level2D\MapChip2D.h" />
-    <ClInclude Include="level3D\Level.h" />
     <ClInclude Include="level3D\MapChip.h" />
     <ClInclude Include="level3D\TklFile.h" />
+    <ClInclude Include="LevelObjectData.h" />
     <ClInclude Include="math\Math.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />

@@ -36,13 +36,23 @@ namespace nsK2Engine
 	{
 		//モデルの初期化
 		ModelInitData initData;
-		//tkmファイルのファイルパスを指定
-		initData.m_tkmFilePath = "Assets/modelData/preset/sky.tkm";
+		// ロード済みのTKMリソースを取得
+		initData.m_tkmFile =
+			g_resourceManager->GetTkm(
+				"Assets/modelData/preset/sky.tkm"
+			);
+
+		K2_ASSERT(
+			initData.m_tkmFile != nullptr,
+			"SkyCube TKM is not loaded.",
+			0
+		);
+
 		//シェーダーファイルのファイルパスを指定
 		initData.m_fxFilePath = "Assets/shader/SkyCubeMap.fx";
 		initData.m_vsEntryPointFunc = "VSMain";
 		initData.m_psEntryPointFunc = "PSMain";
-		
+
 		for (int i = 0; i < enSkyCubeType_Num; i++)
 		{
 			//テクスチャの初期化
