@@ -9,6 +9,7 @@ bool StageResourceLoader::Load(
 {
 	for (const auto& object : stageDefinition.objects)
 	{
+		// assetIdを持たないならスキップする。
 		if (object.assetId.empty())
 		{
 			continue;
@@ -34,21 +35,22 @@ bool StageResourceLoader::Load(
 		//スケルトンパスが設定されていればロードする。
 		if (!asset->skeletonPath.empty())
 		{
-			if (g_resourceManager->LoadTks(asset->skeletonPath.c_str()) == false)
+			if (!
+				g_resourceManager->LoadTks(asset->skeletonPath.c_str())
+				)
 			{
 				return false;
 			}
 		}
 
-		//アニメーションパスが設定されていればロードする。
-		if (!asset->animationPaths.empty())
+		//アニメーションが設定されていればロードする。
+		if (!asset->animations.empty())
 		{
-			for (const auto& animationPath : asset->animationPaths)
+			for (const auto& animation : asset->animations)
 			{
-				if (g_resourceManager->LoadTka(animationPath.c_str()) == false)
-				{
+				if (!g_resourceManager->LoadTka(animation.path.c_str()))
 					return false;
-				}
+
 			}
 		}
 	}

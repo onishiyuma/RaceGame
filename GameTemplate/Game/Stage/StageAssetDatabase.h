@@ -1,20 +1,28 @@
 #pragma once
 
+struct AnimationAssetDefinition
+{
+	std::string name;
+	std::string path;
+	bool isLoop = false;
+};
+
 struct StageAssetDefinition
 {
 	std::string modelPath;
 	std::string skeletonPath;
-	std::vector<std::string> animationPaths;
+	std::vector<AnimationAssetDefinition> animations;
 };
 
 
 /// <summary>
-/// ステージで使用するアセットIDとアセット情報（モデルパス、スケルトンパスなど）の対応を管理するクラス。
+/// ステージで使用するアセットIDと
+/// アセット情報（モデル、スケルトン、アニメーションなど）の対応を管理するクラス。
 /// JSONファイルから対応表を読み込み、アセットIDからアセット情報を取得する。
-/// 
-/// 
-/// 下のようにJSONファイルを作成し、アセットIDとアセット情報の対応を定義する。
-/// 
+///
+/// 下のようにJSONファイルを作成し、
+/// アセットIDとアセット情報の対応を定義する。
+///
 /// {
 ///     "Palm": {
 ///         "modelPath": "Assets/model/stage/Palm.tkm"
@@ -22,15 +30,24 @@ struct StageAssetDefinition
 ///
 ///     "Character": {
 ///         "modelPath": "Assets/model/character/Character.tkm",
-///         "skeletonPath": "Assets/model/character/Character.tks"
-///			"animationPaths": [
-///				"Assets/model/character/Idle.tka",
-///				"Assets/model/character/Run.tka"
-///			]
-///     };
+///         "skeletonPath": "Assets/model/character/Character.tks",
+///         "animations": [
+///             {
+///                 "name": "Idle",
+///                 "path": "Assets/model/character/Idle.tka",
+///                 "isLoop": true
+///             },
+///             {
+///                 "name": "Run",
+///                 "path": "Assets/model/character/Run.tka",
+///                 "isLoop": true
+///             }
+///         ]
+///     }
 /// }
-/// 
-/// モデルのパスは必須で、スケルトンやアニメーションのパスはあれば設定する。
+///
+/// modelPathは必須。
+/// skeletonPath、animationsは必要な場合のみ設定する。
 /// </summary>
 class StageAssetDatabase
 {
