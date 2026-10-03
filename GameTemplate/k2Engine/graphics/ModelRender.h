@@ -89,6 +89,11 @@ namespace nsK2Engine
 			return m_model;
 		}
 
+		const Model& GetModel()const
+		{
+			return m_model;
+		}
+
 		/// <summary>
 		/// 座標、回転、拡大を全て更新
 		/// </summary>
@@ -195,6 +200,11 @@ namespace nsK2Engine
 		Bone* GetBone(int boneNo) const
 		{
 			return m_skeleton.GetBone(boneNo);
+		}
+
+		Matrix GetWorldMatrix() const
+		{
+			return m_model.GetWorldMatrix();
 		}
 
 	private:
