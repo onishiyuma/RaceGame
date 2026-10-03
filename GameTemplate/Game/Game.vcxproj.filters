@@ -26,6 +26,15 @@
     <ClCompile Include="Stage\StageAssetDatabase.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
+    <ClCompile Include="Stage\StageObject.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\StageModel.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\Object\Prop.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -45,6 +54,15 @@
       <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\StageAssetDatabase.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageObject.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageModel.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\Object\Prop.h">
       <Filter>Stage</Filter>
     </ClInclude>
   </ItemGroup>

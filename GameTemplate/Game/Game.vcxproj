@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -225,8 +225,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StageResourceLoader.cpp" />
+    <ClCompile Include="Stage\Object\Prop.cpp" />
     <ClCompile Include="Stage\StageAssetDatabase.cpp" />
     <ClCompile Include="Stage\StageLoader\StageLoader.cpp" />
+    <ClCompile Include="Stage\StageModel.cpp" />
+    <ClCompile Include="Stage\StageObject.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -236,10 +239,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StageResourceLoader.h" />
+    <ClInclude Include="Stage\Object\Prop.h" />
     <ClInclude Include="Stage\StageAssetDatabase.h" />
     <ClInclude Include="Stage\StageLoader\StageDefinition.h" />
     <ClInclude Include="Stage\StageLoader\StageLoader.h" />
     <ClInclude Include="Stage\StageLoader\TransformHelper.h" />
+    <ClInclude Include="Stage\StageModel.h" />
+    <ClInclude Include="Stage\StageObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h" />
   </ItemGroup>
