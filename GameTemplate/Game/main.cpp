@@ -21,7 +21,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	StageDefinition stageDefinition;
 
 	// ステージJSONを読み込む。
-	if (!LoadStage(
+	if (!LoadStageDefinition(
 		"Assets/CourseData/TestStage.json",
 		stageDefinition))
 	{
