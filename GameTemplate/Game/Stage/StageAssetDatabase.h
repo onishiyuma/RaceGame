@@ -22,32 +22,8 @@ struct StageAssetDefinition
 ///
 /// 下のようにJSONファイルを作成し、
 /// アセットIDとアセット情報の対応を定義する。
-///
-/// {
-///     "Palm": {
-///         "modelPath": "Assets/model/stage/Palm.tkm"
-///     },
-///
-///     "Character": {
-///         "modelPath": "Assets/model/character/Character.tkm",
-///         "skeletonPath": "Assets/model/character/Character.tks",
-///         "animations": [
-///             {
-///                 "name": "Idle",
-///                 "path": "Assets/model/character/Idle.tka",
-///                 "isLoop": true
-///             },
-///             {
-///                 "name": "Run",
-///                 "path": "Assets/model/character/Run.tka",
-///                 "isLoop": true
-///             }
-///         ]
-///     }
-/// }
-///
-/// modelPathは必須。
-/// skeletonPath、animationsは必要な場合のみ設定する。
+/// JSONの記述方法については
+/// Assets/StageAssets/README.md を参照。
 /// </summary>
 class StageAssetDatabase
 {
