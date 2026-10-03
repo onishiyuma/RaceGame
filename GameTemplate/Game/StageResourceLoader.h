@@ -3,6 +3,7 @@
 class StageAssetDatabase;
 /// <summary>
 /// ステージのリソースをロードするクラス。
+/// 一つでもロードに失敗したらfalseを返します。
 /// </summary>
 class StageResourceLoader
 {

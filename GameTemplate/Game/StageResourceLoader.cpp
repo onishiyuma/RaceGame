@@ -9,6 +9,11 @@ bool StageResourceLoader::Load(
 {
 	for (const auto& object : stageDefinition.objects)
 	{
+		if (object.assetId.empty())
+		{
+			continue;
+		}
+
 		//idからアセット情報を取得する。
 		const StageAssetDefinition* asset =
 			assetDatabase.FindAssetDefinition(object.assetId);
@@ -46,6 +51,6 @@ bool StageResourceLoader::Load(
 				}
 			}
 		}
-		return true;
 	}
+	return true;
 }
