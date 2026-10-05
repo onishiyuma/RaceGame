@@ -3,12 +3,12 @@
 #include <errno.h>
 
 namespace nsK2EngineLow {
-	void TkaFile::Load(const char* filePath)
+	bool TkaFile::Load(const char* filePath)
 	{
 		FILE* fp = fopen(filePath, "rb");
 		if (fp == nullptr) {
 			MessageBoxA(nullptr, "tkaファイルのオープンに失敗しました。", "エラー", MB_OK);
-			return;
+			return false;
 		}
 		//アニメーションクリップのヘッダーをロード。
 		AnimClipHeader header;
@@ -39,6 +39,8 @@ namespace nsK2EngineLow {
 		fread(&m_keyFrames.front(), sizeof(KeyFrame) * header.numKey, 1, fp);
 
 		fclose(fp);
+
+		return true;
 
 	}
 }

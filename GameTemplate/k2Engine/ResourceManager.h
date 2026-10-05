@@ -11,7 +11,7 @@ namespace nsK2Engine
 		/// ロードする。すでにロード済みなら再ロードしない。
 		/// </summary>
 		/// <param name="filePath"></param>
-		void LoadTkm(const char* filePath);
+		bool LoadTkm(const char* filePath);
 
 		/// <summary>
 		/// ロード済みのものを取得する。
@@ -25,7 +25,7 @@ namespace nsK2Engine
 		/// Tksファイルをロードする。すでにロード済みなら再ロードしない。
 		/// </summary>
 		/// <param name="filePath"></param>
-		void LoadTks(const char* filePath);
+		bool LoadTks(const char* filePath);
 
 		/// <summary>
 		/// ロード済みのTksファイルを取得する。
@@ -39,7 +39,7 @@ namespace nsK2Engine
 		/// Tkaファイルをロードする。すでにロード済みなら再ロードしない。
 		/// </summary>
 		/// <param name="filePath"></param>
-		void LoadTka(const char* filePath);
+		bool LoadTka(const char* filePath);
 
 		/// <summary>
 		/// ロード済みのTkaファイルを取得する。

@@ -4,6 +4,12 @@
     <Filter Include="system">
       <UniqueIdentifier>{22dd8095-74f9-46df-81a1-36675a040b1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Stage">
+      <UniqueIdentifier>{1d0371c7-add8-45f7-b3e2-e6213756e1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stage\StageLoader">
+      <UniqueIdentifier>{9cb4b88e-7b23-4854-83f1-5b1808400666}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -11,11 +17,67 @@
     <ClCompile Include="system\system.cpp">
       <Filter>system</Filter>
     </ClCompile>
+    <ClCompile Include="Stage\StageLoader\StageLoader.cpp">
+      <Filter>Stage\StageLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="StageResourceLoader.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\StageAssetDatabase.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\StageBuilder.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\StageObject.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\StageObjectFactory.cpp" />
+    <ClCompile Include="Stage\StageModel.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\Object\Prop.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\Stage.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h">
       <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageLoader\StageDefinition.h">
+      <Filter>Stage\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageLoader\StageLoader.h">
+      <Filter>Stage\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageLoader\TransformHelper.h">
+      <Filter>Stage\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="StageResourceLoader.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageAssetDatabase.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageBuilder.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageObject.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\StageObjectFactory.h" />
+    <ClInclude Include="Stage\StageModel.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\Object\Prop.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\Stage.h">
+      <Filter>Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

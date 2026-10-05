@@ -38,7 +38,7 @@ namespace nsK2EngineLow {
 		/// 読み込み処理。
 		/// </summary>
 		/// <param name="filePath"></param>
-		void Load(const char* filePath);
+		bool Load(const char* filePath);
 		/// <summary>
 		/// アニメーションイベントにクエリを行う。
 		/// </summary>

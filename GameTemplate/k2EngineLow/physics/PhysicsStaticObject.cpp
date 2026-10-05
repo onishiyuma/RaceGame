@@ -8,12 +8,10 @@
 
 namespace nsK2EngineLow {
 	PhysicsStaticObject::PhysicsStaticObject()
-	{
-	}
+	{}
 	PhysicsStaticObject::~PhysicsStaticObject()
-	{
-	}
-	void PhysicsStaticObject::CreateFromModel(Model& model, const Matrix& worldMatrix, const float restitution)
+	{}
+	void PhysicsStaticObject::CreateFromModel(const Model& model, const Matrix& worldMatrix, const float restitution)
 	{
 		m_meshCollider.CreateFromModel(model, worldMatrix);
 		RigidBodyInitData rbInfo;

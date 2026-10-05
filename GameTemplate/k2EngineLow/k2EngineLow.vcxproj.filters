@@ -557,5 +557,8 @@
     <Filter Include="AI\PathFinding">
       <UniqueIdentifier>{72d94fe6-e599-4523-8e54-81df808c96fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneLoader">
+      <UniqueIdentifier>{ddb5ef2b-9acc-4f6b-87a7-2f69e7d039d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -10,8 +10,8 @@ namespace nsK2Engine
 		/// <summary>
 		/// 通常描画用の初期化
 		/// </summary>
-		/// <param name="tksFile">tksファイル</param>
-		/// <param name="tkmFile">tkmファイル</param>
+		/// <param name="tksFile">tkmファイル</param>
+		/// <param name="tkmFile">tksファイル</param>
 		/// <param name="animationClips">アニメーションクリップ</param>
 		/// <param name="numAnimationClips">アニメーションクリップの数</param>
 		/// <param name="enModelUpAxis">モデルの上方向</param>
@@ -85,6 +85,11 @@ namespace nsK2Engine
 		/// モデルを取得
 		/// </summary>
 		Model& GetModel()
+		{
+			return m_model;
+		}
+
+		const Model& GetModel()const
 		{
 			return m_model;
 		}
@@ -195,6 +200,11 @@ namespace nsK2Engine
 		Bone* GetBone(int boneNo) const
 		{
 			return m_skeleton.GetBone(boneNo);
+		}
+
+		Matrix GetWorldMatrix() const
+		{
+			return m_model.GetWorldMatrix();
 		}
 
 	private:
