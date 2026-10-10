@@ -78,7 +78,7 @@ public static class StageExporter
                 stageObject.type.ToString();
 
             definition.assetId =
-                GetAssetId(stageObject.gameObject);
+                stageObject.GetExportAssetId();
 
             definition.position =
                 new Vector3Data(transform.position);
@@ -115,24 +115,4 @@ public static class StageExporter
         );
     }
 
-    private static string GetAssetId(GameObject obj)
-    {
-        MeshFilter meshFilter =
-            obj.GetComponent<MeshFilter>();
-
-        if (meshFilter == null)
-        {
-            return "";
-        }
-
-        Mesh mesh =
-            meshFilter.sharedMesh;
-
-        if (mesh == null)
-        {
-            return "";
-        }
-
-        return mesh.name;
-    }
 }
