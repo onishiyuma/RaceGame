@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "StageResourceLoader.h"
 #include"Stage/StageAssetDatabase.h"
 #include "ResourceManager.h"
@@ -21,6 +21,12 @@ bool StageResourceLoader::Load(
 
 		if (asset == nullptr)
 		{
+			K2_ASSERT(
+				false,
+				"アセット情報が見つかりません。\n"
+				"アセットID : %s\n",
+				object.assetId.c_str()
+			);
 			return false;
 		}
 
@@ -29,6 +35,14 @@ bool StageResourceLoader::Load(
 			g_resourceManager->LoadTkm(asset->modelPath.c_str())
 			== false)
 		{
+			K2_ASSERT(
+				false,
+				"モデルのロードに失敗しました。\n"
+				"アセットID : %s\n"
+				"モデルパス : %s\n",
+				object.assetId.c_str(),
+				asset->modelPath.c_str()
+			);
 			return false;
 		}
 
