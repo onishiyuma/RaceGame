@@ -11,7 +11,11 @@ public:
 
 	bool Init(
 		const ObjectDefinition& definition,
-		const StageAssetDatabase& assetDatabase);
+		const StageAssetDatabase& assetDatabase,
+		const bool isActive = true
+	);
+
+	bool Start();
 
 	void Update();
 
@@ -29,17 +33,18 @@ protected:
 	{
 		return true;
 	}
+
+	virtual bool OnStart() { return true; }
+
 	/// <summary>
 	/// 派生クラス固有の更新。
 	/// </summary>
-	virtual void OnUpdate()
-	{}
+	virtual void OnUpdate() {}
 
 	/// <summary>
 	/// 派生クラス固有の描画。
 	/// </summary>
-	virtual void OnDraw(RenderContext& rc)
-	{}
+	virtual void OnDraw(RenderContext& rc) {}
 
 	/// <summary>
 	/// アニメーションを再生する。
@@ -51,6 +56,12 @@ protected:
 		const std::string& name,
 		float interpolateTime = 0.0f);
 
+	void SetActive(bool isActive)
+	{
+		m_isActive = isActive;
+	}
+
+
 protected:
 	std::unique_ptr<StageModel> m_stageModel;
 
@@ -58,5 +69,6 @@ private:
 	Vector3 m_position = Vector3::Zero;
 	Quaternion m_rotation = Quaternion::Identity;
 	Vector3 m_scale = Vector3::One;
+	bool m_isActive = true;
 };
 
