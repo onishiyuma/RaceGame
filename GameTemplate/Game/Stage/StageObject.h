@@ -61,6 +61,62 @@ protected:
 		m_isActive = isActive;
 	}
 
+	/// <summary>
+/// オブジェクトの位置を設定する。
+/// </summary>
+	void SetPosition(const Vector3& position)
+	{
+		m_position = position;
+		UpdateModelTransform();
+	}
+
+	/// <summary>
+	/// オブジェクトの回転を設定する。
+	/// </summary>
+	void SetRotation(const Quaternion& rotation)
+	{
+		m_rotation = rotation;
+		UpdateModelTransform();
+	}
+
+	/// <summary>
+	/// オブジェクトの拡大率を設定する。
+	/// </summary>
+	void SetScale(const Vector3& scale)
+	{
+		m_scale = scale;
+		UpdateModelTransform();
+	}
+
+	/// <summary>
+	/// オブジェクトの位置を取得する。
+	/// </summary>
+	const Vector3& GetPosition() const
+	{
+		return m_position;
+	}
+
+	/// <summary>
+	/// オブジェクトの回転を取得する。
+	/// </summary>
+	const Quaternion& GetRotation() const
+	{
+		return m_rotation;
+	}
+
+	/// <summary>
+	/// オブジェクトの拡大率を取得する。
+	/// </summary>
+	const Vector3& GetScale() const
+	{
+		return m_scale;
+	}
+
+private:
+	/// <summary>
+	/// StageObjectのTransformをStageModelに反映する。
+	/// </summary>
+	void UpdateModelTransform();
 
 protected:
 	std::unique_ptr<StageModel> m_stageModel;

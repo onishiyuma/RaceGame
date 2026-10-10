@@ -85,3 +85,15 @@ bool StageObject::PlayAnimation(const std::string& name, float interpolateTime)
 
 	return m_stageModel->PlayAnimation(name, interpolateTime);
 }
+
+void StageObject::UpdateModelTransform()
+{
+	// モデルが存在しない場合は何もしない。
+	if (m_stageModel == nullptr)return;
+
+	m_stageModel->SetTRS(
+		m_position,
+		m_rotation,
+		m_scale
+	);
+}
