@@ -224,6 +224,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="StageResourceLoader.cpp" />
     <ClCompile Include="Stage\Object\Prop.cpp" />
     <ClCompile Include="Stage\Stage.cpp" />
@@ -241,6 +242,8 @@
     <ClCompile Include="system\system.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\IScene.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="StageResourceLoader.h" />
     <ClInclude Include="Stage\Object\Prop.h" />
     <ClInclude Include="Stage\Stage.h" />
