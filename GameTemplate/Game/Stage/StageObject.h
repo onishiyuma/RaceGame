@@ -19,7 +19,7 @@ public:
 
 	void Update();
 
-	void Draw(RenderContext& rc);
+	void Render(RenderContext& rc);
 
 protected:
 	/// <summary>
@@ -44,7 +44,7 @@ protected:
 	/// <summary>
 	/// 派生クラス固有の描画。
 	/// </summary>
-	virtual void OnDraw(RenderContext& rc) {}
+	virtual void OnRender(RenderContext& rc) {}
 
 	/// <summary>
 	/// アニメーションを再生する。

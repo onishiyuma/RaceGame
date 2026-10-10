@@ -62,7 +62,7 @@ void StageObject::Update()
 	OnUpdate();
 }
 
-void StageObject::Draw(RenderContext& rc)
+void StageObject::Render(RenderContext& rc)
 {
 	if (!m_isActive)return;
 
@@ -73,7 +73,7 @@ void StageObject::Draw(RenderContext& rc)
 	}
 
 	// 必要なら派生クラス固有の描画。
-	OnDraw(rc);
+	OnRender(rc);
 }
 
 bool StageObject::PlayAnimation(const std::string& name, float interpolateTime)
