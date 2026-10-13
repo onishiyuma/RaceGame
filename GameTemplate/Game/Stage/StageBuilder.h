@@ -25,7 +25,16 @@ public:
 		const StageAssetDatabase& assetDatabase,
 		Stage& stage);
 
+	/// <summary>
+	/// ステージ構築中に発生したエラー一覧を取得する。
+	/// </summary>
+	const std::vector<std::string>& GetErrors() const
+	{
+		return m_errors;
+	}
+
 private:
 	StageObjectFactory m_factory;
+	std::vector<std::string> m_errors;
 };
 

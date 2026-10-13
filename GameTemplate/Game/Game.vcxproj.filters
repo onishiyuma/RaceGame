@@ -10,6 +10,9 @@
     <Filter Include="Stage\StageLoader">
       <UniqueIdentifier>{9cb4b88e-7b23-4854-83f1-5b1808400666}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{6c597d8f-ec95-48f7-b2c6-510a3ccb5f75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -41,6 +44,12 @@
     </ClCompile>
     <ClCompile Include="Stage\Stage.cpp">
       <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\DebugScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +87,15 @@
     </ClInclude>
     <ClInclude Include="Stage\Stage.h">
       <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\IScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\DebugScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

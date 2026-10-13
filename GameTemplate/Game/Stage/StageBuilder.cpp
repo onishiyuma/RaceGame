@@ -23,8 +23,18 @@ bool StageBuilder::Build(
 
 		if (object == nullptr)
 		{
-			stage.Clear();
-			return false;
+			// 失敗したオブジェクトだけスキップして、
+			// 他のオブジェクトの構築は続行する。
+
+			std::string errorMessage = "StageObject creation failed. type: " + objectDef.type;
+
+			if (!objectDef.assetId.empty())
+			{
+				errorMessage += ", assetId: " + objectDef.assetId;
+			}
+
+			m_errors.push_back(errorMessage);
+			continue;
 		}
 
 		stage.AddObject(std::move(object));

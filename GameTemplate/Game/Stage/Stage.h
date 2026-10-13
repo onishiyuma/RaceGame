@@ -17,11 +17,11 @@ public:
 		}
 	}
 
-	void Draw(RenderContext& rc)
+	void Render(RenderContext& rc)
 	{
 		for (auto& object : m_objects)
 		{
-			object->Draw(rc);
+			object->Render(rc);
 		}
 	}
 

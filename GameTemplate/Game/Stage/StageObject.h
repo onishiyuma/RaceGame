@@ -11,11 +11,15 @@ public:
 
 	bool Init(
 		const ObjectDefinition& definition,
-		const StageAssetDatabase& assetDatabase);
+		const StageAssetDatabase& assetDatabase,
+		const bool isActive = true
+	);
+
+	bool Start();
 
 	void Update();
 
-	void Draw(RenderContext& rc);
+	void Render(RenderContext& rc);
 
 protected:
 	/// <summary>
@@ -29,17 +33,18 @@ protected:
 	{
 		return true;
 	}
+
+	virtual bool OnStart() { return true; }
+
 	/// <summary>
 	/// 派生クラス固有の更新。
 	/// </summary>
-	virtual void OnUpdate()
-	{}
+	virtual void OnUpdate() {}
 
 	/// <summary>
 	/// 派生クラス固有の描画。
 	/// </summary>
-	virtual void OnDraw(RenderContext& rc)
-	{}
+	virtual void OnRender(RenderContext& rc) {}
 
 	/// <summary>
 	/// アニメーションを再生する。
@@ -51,6 +56,68 @@ protected:
 		const std::string& name,
 		float interpolateTime = 0.0f);
 
+	void SetActive(bool isActive)
+	{
+		m_isActive = isActive;
+	}
+
+	/// <summary>
+/// オブジェクトの位置を設定する。
+/// </summary>
+	void SetPosition(const Vector3& position)
+	{
+		m_position = position;
+		UpdateModelTransform();
+	}
+
+	/// <summary>
+	/// オブジェクトの回転を設定する。
+	/// </summary>
+	void SetRotation(const Quaternion& rotation)
+	{
+		m_rotation = rotation;
+		UpdateModelTransform();
+	}
+
+	/// <summary>
+	/// オブジェクトの拡大率を設定する。
+	/// </summary>
+	void SetScale(const Vector3& scale)
+	{
+		m_scale = scale;
+		UpdateModelTransform();
+	}
+
+	/// <summary>
+	/// オブジェクトの位置を取得する。
+	/// </summary>
+	const Vector3& GetPosition() const
+	{
+		return m_position;
+	}
+
+	/// <summary>
+	/// オブジェクトの回転を取得する。
+	/// </summary>
+	const Quaternion& GetRotation() const
+	{
+		return m_rotation;
+	}
+
+	/// <summary>
+	/// オブジェクトの拡大率を取得する。
+	/// </summary>
+	const Vector3& GetScale() const
+	{
+		return m_scale;
+	}
+
+private:
+	/// <summary>
+	/// StageObjectのTransformをStageModelに反映する。
+	/// </summary>
+	void UpdateModelTransform();
+
 protected:
 	std::unique_ptr<StageModel> m_stageModel;
 
@@ -58,5 +125,6 @@ private:
 	Vector3 m_position = Vector3::Zero;
 	Quaternion m_rotation = Quaternion::Identity;
 	Vector3 m_scale = Vector3::One;
+	bool m_isActive = true;
 };
 

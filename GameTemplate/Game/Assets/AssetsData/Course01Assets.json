@@ -1,0 +1,147 @@
+{
+    "Waterfall.Ramp": {
+        "modelPath": "Assets/modelData/track/track_1/Waterfall.Ramp.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Waterfall": {
+        "modelPath": "Assets/modelData/track/track_1/Waterfall.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Waterfall.Cliff": {
+        "modelPath": "Assets/modelData/track/track_1/Waterfall.Cliff.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "StartingBracket": {
+        "modelPath": "Assets/modelData/track/track_1/StartingBracket.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Water": {
+        "modelPath": "Assets/modelData/track/track_1/Water.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Road": {
+        "modelPath": "Assets/modelData/track/track_1/Road.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Railing.002": {
+        "modelPath": "Assets/modelData/track/track_1/Railing_002.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Railing.001": {
+        "modelPath": "Assets/modelData/track/track_1/Railing_001.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Picket": {
+        "modelPath": "Assets/modelData/track/track_1/Picket.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Parasol": {
+        "modelPath": "Assets/modelData/track/track_1/Parasol.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Palm.002": {
+        "modelPath": "Assets/modelData/track/track_1/Palm_002.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Palm.003": {
+        "modelPath": "Assets/modelData/track/track_1/Palm_003.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Palm": {
+        "modelPath": "Assets/modelData/track/track_1/Palm.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Palm.001": {
+        "modelPath": "Assets/modelData/track/track_1/Palm_001.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Mountain.002": {
+        "modelPath": "Assets/modelData/track/track_1/Mountain_002.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Mountain": {
+        "modelPath": "Assets/modelData/track/track_1/Mountain.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Ground": {
+        "modelPath": "Assets/modelData/track/track_1/Ground.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Curb.004": {
+        "modelPath": "Assets/modelData/track/track_1/Curb_004.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "FinishLine": {
+        "modelPath": "Assets/modelData/track/track_1/FinishLine.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Curb.002": {
+        "modelPath": "Assets/modelData/track/track_1/Curb_002.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Curb.003": {
+        "modelPath": "Assets/modelData/track/track_1/Curb_003.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Boundary.002": {
+        "modelPath": "Assets/modelData/track/track_1/Boundary_002.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Curb.001": {
+        "modelPath": "Assets/modelData/track/track_1/Curb_001.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Boundary": {
+        "modelPath": "Assets/modelData/track/track_1/Boundary.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Boundary.001": {
+        "modelPath": "Assets/modelData/track/track_1/Boundary_001.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Beach": {
+        "modelPath": "Assets/modelData/track/track_1/Beach.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Ball": {
+        "modelPath": "Assets/modelData/track/track_1/Ball.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Grass": {
+        "modelPath": "Assets/modelData/track/track_1/Grass.tkm",
+        "skeletonPath": "",
+        "animations": []
+    },
+    "Boostpad": {
+        "modelPath": "Assets/modelData/track/track_1/Grass.tkm",
+        "skeletonPath": "",
+        "animations": []
+    }
+}
