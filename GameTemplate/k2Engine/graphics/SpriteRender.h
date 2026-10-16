@@ -114,6 +114,22 @@ namespace nsK2Engine
 		}
 
 		/// <summary>
+		/// スプライトの描画を有効化
+		/// </summary>
+		void EnableDraw()
+		{
+			m_isDrawing = true;
+		}
+
+		/// <summary>
+		/// スプライトの描画を無効化
+		/// </summary>
+		void DisableDraw()
+		{
+			m_isDrawing = false;
+		}
+
+		/// <summary>
 		/// 更新処理
 		/// </summary>
 		void Update();
@@ -140,6 +156,7 @@ namespace nsK2Engine
 		Quaternion m_rotation = Quaternion::Identity;					//回転
 		Vector3 m_scale = Vector3::One;									//拡大率
 		Vector2 m_pivot = Sprite::DEFAULT_PIVOT;						//ピボット
+		bool m_isDrawing = true;										//描画するか？(デフォルトは描画する)
 	};
 }
 

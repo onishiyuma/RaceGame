@@ -9,3 +9,7 @@ extern K2EngineLow* g_k2EngineLow;
 
 // K2Engineのグローバルアクセスポイント
 extern K2Engine* g_k2Engine;
+
+#include "Src/Ui/UIManager.h"
+#include "Src/Ui/UIAnimation.h"
+#include "Src/Ui/UIAnimationSequence.h"

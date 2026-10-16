@@ -226,6 +226,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\DebugScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Src\Ui\UIAnimation.cpp" />
+    <ClCompile Include="Src\Ui\UIAnimationSequence.cpp" />
+    <ClCompile Include="Src\Ui\UIManager.cpp" />
     <ClCompile Include="StageResourceLoader.cpp" />
     <ClCompile Include="Stage\Object\Prop.cpp" />
     <ClCompile Include="Stage\Stage.cpp" />
@@ -246,6 +249,9 @@
     <ClInclude Include="Scene\DebugScene.h" />
     <ClInclude Include="Scene\IScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Src\Ui\UIAnimation.h" />
+    <ClInclude Include="Src\Ui\UIAnimationSequence.h" />
+    <ClInclude Include="Src\Ui\UIManager.h" />
     <ClInclude Include="StageResourceLoader.h" />
     <ClInclude Include="Stage\Object\Prop.h" />
     <ClInclude Include="Stage\Stage.h" />
