@@ -1,11 +1,11 @@
 ﻿#include "stdafx.h"
 #include "StageResourceLoader.h"
-#include"Stage/StageAssetDatabase.h"
+#include"AssetDatabase.h"
 #include "ResourceManager.h"
+#include "Stage/ModelAssetDefinition.h"
+#include "ModelResourceLoader.h"
 
-bool StageResourceLoader::Load(
-	const StageDefinition& stageDefinition,
-	const StageAssetDatabase& assetDatabase)
+bool LoadStageResources(const StageDefinition& stageDefinition, const AssetDatabase& assetDatabase)
 {
 	for (const auto& object : stageDefinition.objects)
 	{
@@ -16,7 +16,7 @@ bool StageResourceLoader::Load(
 		}
 
 		//idからアセット情報を取得する。
-		const StageAssetDefinition* asset =
+		const ModelAssetDefinition* asset =
 			assetDatabase.FindAssetDefinition(object.assetId);
 
 		if (asset == nullptr)
@@ -30,42 +30,10 @@ bool StageResourceLoader::Load(
 			return false;
 		}
 
-		if (
-			//モデルをロードする。
-			g_resourceManager->LoadTkm(asset->modelPath.c_str())
-			== false)
+		// モデルに必要なリソースをロードする。
+		if (!LoadModelResources(*asset))
 		{
-			K2_ASSERT(
-				false,
-				"モデルのロードに失敗しました。\n"
-				"アセットID : %s\n"
-				"モデルパス : %s\n",
-				object.assetId.c_str(),
-				asset->modelPath.c_str()
-			);
 			return false;
-		}
-
-		//スケルトンパスが設定されていればロードする。
-		if (!asset->skeletonPath.empty())
-		{
-			if (!
-				g_resourceManager->LoadTks(asset->skeletonPath.c_str())
-				)
-			{
-				return false;
-			}
-		}
-
-		//アニメーションが設定されていればロードする。
-		if (!asset->animations.empty())
-		{
-			for (const auto& animation : asset->animations)
-			{
-				if (!g_resourceManager->LoadTka(animation.path.c_str()))
-					return false;
-
-			}
 		}
 	}
 	return true;

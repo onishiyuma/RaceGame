@@ -4,7 +4,7 @@
 
 bool StageBuilder::Build(
 	const StageDefinition& definition,
-	const StageAssetDatabase& assetDatabase,
+	const AssetDatabase& assetDatabase,
 	Stage& stage
 )
 {

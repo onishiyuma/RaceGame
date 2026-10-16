@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene/IScene.h"
-#include "Stage/StageAssetDatabase.h"
+#include "AssetDatabase.h"
 #include "Stage/StageLoader/StageDefinition.h"
 #include "Stage/Stage.h"
 
@@ -51,7 +51,7 @@ private:
 	void UpdateDebugCamera();
 
 private:
-	StageAssetDatabase m_assetDatabase;
+	AssetDatabase m_assetDatabase;
 	StageDefinition m_stageDefinition;
 
 	std::unique_ptr<Stage> m_stage;

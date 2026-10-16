@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "StageObjectFactory.h"
 #include "Stage/StageLoader/StageDefinition.h"
-#include "Stage/StageAssetDatabase.h"
+#include "AssetDatabase.h"
 #include "Stage/Object/Prop.h"
 
 
@@ -47,7 +47,7 @@ StageObjectFactory::StageObjectFactory()
 std::unique_ptr<StageObject>
 StageObjectFactory::Create(
 	const ObjectDefinition& definition,
-	const StageAssetDatabase& assetDatabase)
+	const AssetDatabase& assetDatabase)
 {
 	auto it = m_creators.find(definition.type);
 

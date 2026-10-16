@@ -11,9 +11,7 @@
 bool DebugScene::OnLoad()
 {
 	// アセットIDとアセットの対応表を読み込む。
-	m_assetDatabase.Init(
-		"Assets/assetsData/Course01Assets.json"
-	);
+	m_assetDatabase.Init("Assets/assetsData/Course01Assets.json");
 
 	// ステージ配置情報を読み込む。
 	LoadStageDefinition(
@@ -21,12 +19,15 @@ bool DebugScene::OnLoad()
 		m_stageDefinition
 	);
 
-	// ステージで使用するリソースを事前ロードする。
-	StageResourceLoader resourceLoader;
-	resourceLoader.Load(
-		m_stageDefinition,
-		m_assetDatabase
-	);
+	// ステージ上のオブジェクトが使用するリソースをロードする。
+	if (!LoadStageResources(m_stageDefinition, m_assetDatabase))
+	{
+		K2_ASSERT(
+			false,
+			"ステージリソースのロードに失敗しました。\n"
+		);
+		return false;
+	}
 
 	return true;
 }

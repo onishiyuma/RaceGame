@@ -26,9 +26,6 @@
     <ClCompile Include="StageResourceLoader.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
-    <ClCompile Include="Stage\StageAssetDatabase.cpp">
-      <Filter>Stage</Filter>
-    </ClCompile>
     <ClCompile Include="Stage\StageBuilder.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
@@ -36,7 +33,7 @@
       <Filter>Stage</Filter>
     </ClCompile>
     <ClCompile Include="Stage\StageObjectFactory.cpp" />
-    <ClCompile Include="Stage\StageModel.cpp">
+    <ClCompile Include="Stage\ModelInstance.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
     <ClCompile Include="Stage\Object\Prop.cpp">
@@ -54,6 +51,8 @@
     <ClCompile Include="Src\Ui\UIAnimation.cpp" />
     <ClCompile Include="Src\Ui\UIAnimationSequence.cpp" />
     <ClCompile Include="Src\Ui\UIManager.cpp" />
+    <ClCompile Include="AssetDatabase.cpp" />
+    <ClCompile Include="ModelResourceLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -72,9 +71,6 @@
     <ClInclude Include="StageResourceLoader.h">
       <Filter>Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Stage\StageAssetDatabase.h">
-      <Filter>Stage</Filter>
-    </ClInclude>
     <ClInclude Include="Stage\StageBuilder.h">
       <Filter>Stage</Filter>
     </ClInclude>
@@ -82,7 +78,10 @@
       <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\StageObjectFactory.h" />
-    <ClInclude Include="Stage\StageModel.h">
+    <ClInclude Include="Stage\ModelAssetDefinition.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\ModelInstance.h">
       <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\Object\Prop.h">
@@ -103,5 +102,7 @@
     <ClInclude Include="Src\Ui\UIAnimation.h" />
     <ClInclude Include="Src\Ui\UIAnimationSequence.h" />
     <ClInclude Include="Src\Ui\UIManager.h" />
+    <ClInclude Include="AssetDatabase.h" />
+    <ClInclude Include="ModelResourceLoader.h" />
   </ItemGroup>
 </Project>

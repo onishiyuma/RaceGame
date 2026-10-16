@@ -1,9 +1,9 @@
 #pragma once
-#include"Stage/StageModel.h"
+#include"Stage/ModelInstance.h"
 #include"Json/json.hpp"
 
 struct ObjectDefinition;
-class StageAssetDatabase;
+class AssetDatabase;
 class StageObject
 {
 public:
@@ -11,7 +11,7 @@ public:
 
 	bool Init(
 		const ObjectDefinition& definition,
-		const StageAssetDatabase& assetDatabase,
+		const AssetDatabase& assetDatabase,
 		const bool isActive = true
 	);
 
@@ -114,12 +114,12 @@ protected:
 
 private:
 	/// <summary>
-	/// StageObjectのTransformをStageModelに反映する。
+	/// StageObjectのTransformをModelInstanceに反映する。
 	/// </summary>
 	void UpdateModelTransform();
 
 protected:
-	std::unique_ptr<StageModel> m_stageModel;
+	std::unique_ptr<ModelInstance> m_stageModel;
 
 private:
 	Vector3 m_position = Vector3::Zero;

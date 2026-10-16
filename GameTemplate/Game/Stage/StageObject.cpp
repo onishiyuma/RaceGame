@@ -1,11 +1,11 @@
 #include"stdafx.h"
 #include "StageObject.h"
-#include"Stage/StageAssetDatabase.h"
+#include"AssetDatabase.h"
 #include "Stage/StageLoader/StageDefinition.h"
 
 bool StageObject::Init(
 	const ObjectDefinition& definition,
-	const StageAssetDatabase& assetDatabase,
+	const AssetDatabase& assetDatabase,
 	const bool isActive
 )
 {
@@ -17,7 +17,7 @@ bool StageObject::Init(
 	//アセットIDが入っていたらステージモデルを作る。
 	if (!definition.assetId.empty())
 	{
-		const StageAssetDefinition* asset =
+		const ModelAssetDefinition* asset =
 			assetDatabase.FindAssetDefinition(
 				definition.assetId
 			);
@@ -25,7 +25,7 @@ bool StageObject::Init(
 		// アセットIDが見つからなかったらfalseを返す。
 		if (asset == nullptr)return false;
 
-		auto stageModel = std::make_unique<StageModel>();
+		auto stageModel = std::make_unique<ModelInstance>();
 
 		//	モデルの初期化に失敗したらfalseを返す。
 		if (!stageModel->Init(*asset))return false;

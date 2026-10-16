@@ -1,13 +1,13 @@
 #pragma once
 /// <summary>
-/// ステージオブジェクトが使用するモデルを管理するクラス。
+/// モデルのインスタンスを管理するクラス。
 /// ロード済みリソースを使用してModelRenderを初期化する。
 /// </summary>
-struct  StageAssetDefinition;
-class StageModel
+struct  ModelAssetDefinition;
+class ModelInstance
 {
 public:
-	bool Init(const StageAssetDefinition& asset);
+	bool Init(const ModelAssetDefinition& asset);
 
 	void SetTRS(
 		const Vector3& position,
