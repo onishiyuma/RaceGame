@@ -24,10 +24,15 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	SceneManager* sceneManager = NewGO<SceneManager>(0);
 	sceneManager->Init(std::make_unique<DebugScene>());
 
+	UIManager::CreateInstance();
+
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
 		K2Engine::GetInstance()->Execute();
+
+		UIManager::GetInstance()->Update();
+		UIManager::GetInstance()->Render(g_graphicsEngine->GetRenderContext());
 	}
 
 	K2Engine::DeleteInstance();

@@ -32,6 +32,7 @@ namespace nsK2Engine
 	void SpriteRender::Draw(RenderContext& rc)
 	{
 		//レンダリングオブジェクトの追加
+		if (!m_isDrawing) { return; }
 		g_renderingEngine->AddRenderObject(this);
 	}
 }

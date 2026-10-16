@@ -44,6 +44,18 @@ namespace nsK2Engine
 		}
 
 		/// <summary>
+		/// レンダリングオブジェクトの削除
+		/// </summary>
+		/// <param name="renderObject">レンダリングオブジェクト</param>
+		void DeleteRenderObject(IRenderer* renderObject)
+		{
+			auto it = std::find(m_renderObjects.begin(), m_renderObjects.end(), renderObject);
+			if (it != m_renderObjects.end()) {
+				m_renderObjects.erase(it);
+			}
+		}
+
+		/// <summary>
 		/// ディレクションライトを設定する
 		/// </summary>
 		/// <param name="direction">ライトの方向</param>
