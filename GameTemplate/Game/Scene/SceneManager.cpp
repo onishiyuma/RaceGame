@@ -142,7 +142,7 @@ void SceneManager::UpdateTransition()
 
 void SceneManager::UpdateFadingOut()
 {
-	// TODO: フェードアウト処理をあとでかく
+	// TODO: フェードアウト処理をあとでかく！
 	m_transitionState = TransitionState::Loading;
 }
 
@@ -209,7 +209,7 @@ void SceneManager::UpdateSwitching()
 
 void SceneManager::UpdateFadingIn()
 {
-	// TODO: フェードイン処理をあとで書く
+	// TODO: フェードイン処理をあとで書く！
 	m_transitionState = TransitionState::Idle;
 }
 
