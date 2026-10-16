@@ -22,7 +22,7 @@ namespace nsK2Engine
 			TksFile* tksFile,
 			AnimationClip* animationClips = nullptr,
 			int numAnimationClips = 0,
-			EnModelUpAxis enModelUpAxis = enModelUpAxisZ,
+			EnModelUpAxis enModelUpAxis = enModelUpAxisY,
 			bool isShadowCaster = false,
 			bool isShadowReceiver = false,
 			AlphaBlendMode alphaBlendMode = AlphaBlendMode_None);
