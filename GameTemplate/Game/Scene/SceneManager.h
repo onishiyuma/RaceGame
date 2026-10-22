@@ -1,6 +1,12 @@
 #pragma once
 
 class IScene;
+
+/// <summary>
+/// ゲーム全体のシーンを管理するクラス。
+/// シーンをスタックで保持して、切り替えや追加を管理する。
+/// シーンの切り替え要求を受け取って、フェード、ロード、初期化などの遷移処理を順番に実行します。
+/// </summary>
 class SceneManager : public IGameObject
 {
 public:
@@ -22,19 +28,10 @@ public:
 	SceneManager() = default;
 	~SceneManager();
 
-	/// <summary>
-	/// SceneManagerを初期化し、最初のシーンを設定する。
-	/// </summary>
 	bool Init(std::unique_ptr<IScene> firstScene);
 
-	/// <summary>
-	/// SceneManagerを更新する。
-	/// </summary>
 	void Update() override;
 
-	/// <summary>
-	/// シーンを描画する。
-	/// </summary>
 	void Render(RenderContext& renderContext) override;
 
 	/// <summary>
@@ -98,26 +95,20 @@ private:
 	void UpdateTransition();
 
 	void UpdateFadingOut();
+
 	void UpdateLoading();
+
 	void UpdateSwitching();
+
 	void UpdateFadingIn();
 
 	void CancelTransition();
 
 private:
 
-	/// <summary>
-	/// 現在存在しているシーン。
-	/// 一番後ろが現在のシーン。
-	/// </summary>
 	std::vector<std::unique_ptr<IScene>> m_sceneStack;
-
-	/// <summary>
-	/// 次に使用するシーン。
-	/// </summary>
 	std::unique_ptr<IScene> m_nextScene;
-
-	TransitionState m_transitionState = TransitionState::Idle;
+	TransitionState m_transitionState = TransitionState::Idle;	//シーンマネージャーの遷移状態
 
 
 	enum class RequestType

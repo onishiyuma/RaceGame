@@ -1,6 +1,6 @@
 #pragma once
 #include "Stage/StageLoader/StageDefinition.h"
-#include"Stage/StageAssetDatabase.h"
+#include"AssetDatabase.h"
 #include"Stage/StageObjectFactory.h"
 
 /// <summary>
@@ -22,7 +22,7 @@ public:
 	/// <returns>全部成功したときだけtrue</returns>
 	bool Build(
 		const StageDefinition& definition,
-		const StageAssetDatabase& assetDatabase,
+		const AssetDatabase& assetDatabase,
 		Stage& stage);
 
 	/// <summary>

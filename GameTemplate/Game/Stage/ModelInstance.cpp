@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "StageModel.h"
-#include"Stage/StageAssetDatabase.h"
+#include "ModelInstance.h"
+#include"Stage/ModelAssetDefinition.h"
 
-bool StageModel::Init(const StageAssetDefinition& asset)
+bool ModelInstance::Init(const ModelAssetDefinition& asset)
 {
 	//tkmを取得する。
 	TkmFile* tkmFile =
@@ -71,7 +71,7 @@ bool StageModel::Init(const StageAssetDefinition& asset)
 	return true;
 }
 
-bool StageModel::PlayAnimation(const std::string& name, float interpolateTime)
+bool ModelInstance::PlayAnimation(const std::string& name, float interpolateTime)
 {
 	auto it = m_animationIndices.find(name);
 

@@ -33,28 +33,21 @@ bool LoadStageDefinition(const std::string& filepath, StageDefinition& outStageD
 {
 	std::ifstream file(filepath);
 
-	if (!file.is_open())
-	{
-		return false;
-	}
+	//開かなかったらfalseを返す。
+	if (!file.is_open())return false;
 
 	try
 	{
-
 		nlohmann::json jsonRoot;
 
+		//Jsonファイルを読み込む
 		file >> jsonRoot;
 
+		//objectsがなければfalse。
+		if (!jsonRoot.contains("objects"))return false;
 
-		if (!jsonRoot.contains("objects"))
-		{
-			return false;
-		}
-
-		if (!jsonRoot["objects"].is_array())
-		{
-			return false;
-		}
+		//オブジェクトが配列じゃなければfalse。
+		if (!jsonRoot["objects"].is_array())return false;
 
 		outStageDefinition.objects.clear();
 
@@ -65,12 +58,10 @@ bool LoadStageDefinition(const std::string& filepath, StageDefinition& outStageD
 			ObjectDefinition definition;
 
 			//タイプを設定
-			definition.type =
-				jsonObject.at("type").get<std::string>();
+			definition.type = jsonObject.at("type").get<std::string>();
 
 			//アセットIDを設定
-			definition.assetId =
-				jsonObject.at("assetId").get<std::string>();
+			definition.assetId = jsonObject.at("assetId").get<std::string>();
 
 			//位置を設定
 			{
@@ -104,9 +95,7 @@ bool LoadStageDefinition(const std::string& filepath, StageDefinition& outStageD
 					nlohmann::json::object()
 				);
 
-			outStageDefinition.objects.push_back(
-				definition
-			);
+			outStageDefinition.objects.push_back(definition);
 		}
 	}
 	catch (...)

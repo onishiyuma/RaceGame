@@ -4,7 +4,7 @@
 using Creator = std::function<std::unique_ptr<StageObject>()>;
 
 struct ObjectDefinition;
-class StageAssetDatabase;
+class AssetDatabase;
 class StageObjectFactory
 {
 public:
@@ -12,7 +12,7 @@ public:
 
 	std::unique_ptr<StageObject> Create(
 		const ObjectDefinition& definition,
-		const StageAssetDatabase& assetDatabase
+		const AssetDatabase& assetDatabase
 	);
 
 private:

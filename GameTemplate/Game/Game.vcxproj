@@ -223,7 +223,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetDatabase.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ModelResourceLoader.cpp" />
     <ClCompile Include="Scene\DebugScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Ui\UIAnimation.cpp" />
@@ -232,10 +234,9 @@
     <ClCompile Include="StageResourceLoader.cpp" />
     <ClCompile Include="Stage\Object\Prop.cpp" />
     <ClCompile Include="Stage\Stage.cpp" />
-    <ClCompile Include="Stage\StageAssetDatabase.cpp" />
     <ClCompile Include="Stage\StageBuilder.cpp" />
     <ClCompile Include="Stage\StageLoader\StageLoader.cpp" />
-    <ClCompile Include="Stage\StageModel.cpp" />
+    <ClCompile Include="Stage\ModelInstance.cpp" />
     <ClCompile Include="Stage\StageObject.cpp" />
     <ClCompile Include="Stage\StageObjectFactory.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -246,6 +247,8 @@
     <ClCompile Include="system\system.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetDatabase.h" />
+    <ClInclude Include="ModelResourceLoader.h" />
     <ClInclude Include="Scene\DebugScene.h" />
     <ClInclude Include="Scene\IScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
@@ -255,12 +258,12 @@
     <ClInclude Include="StageResourceLoader.h" />
     <ClInclude Include="Stage\Object\Prop.h" />
     <ClInclude Include="Stage\Stage.h" />
-    <ClInclude Include="Stage\StageAssetDatabase.h" />
     <ClInclude Include="Stage\StageBuilder.h" />
     <ClInclude Include="Stage\StageLoader\StageDefinition.h" />
     <ClInclude Include="Stage\StageLoader\StageLoader.h" />
     <ClInclude Include="Stage\StageLoader\TransformHelper.h" />
-    <ClInclude Include="Stage\StageModel.h" />
+    <ClInclude Include="Stage\ModelAssetDefinition.h" />
+    <ClInclude Include="Stage\ModelInstance.h" />
     <ClInclude Include="Stage\StageObject.h" />
     <ClInclude Include="Stage\StageObjectFactory.h" />
     <ClInclude Include="stdafx.h" />

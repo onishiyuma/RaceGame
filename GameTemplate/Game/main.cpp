@@ -2,7 +2,7 @@
 #include <cmath>
 #include "system/system.h"
 #include "Stage/StageLoader/StageDefinition.h"
-#include "Stage/StageAssetDatabase.h"
+#include "AssetDatabase.h"
 #include "Stage/StageLoader/StageLoader.h"
 #include"StageResourceLoader.h"
 #include"Stage/Stage.h"
@@ -21,6 +21,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	// ゲームの初期化。
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, TEXT("Game"));
 
+	//シーンマネージャーの作成。
 	SceneManager* sceneManager = NewGO<SceneManager>(0);
 	sceneManager->Init(std::make_unique<DebugScene>());
 
