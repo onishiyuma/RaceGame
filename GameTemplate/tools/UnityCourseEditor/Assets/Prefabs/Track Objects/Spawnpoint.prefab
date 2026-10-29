@@ -169,3 +169,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageObjectInfo
   type: 5
   assetId: 
+  properties:
+  - key: spawnPointId
+    type: 0
+    stringValue: player1
+    intValue: 0
+    floatValue: 0
+    boolValue: 0
