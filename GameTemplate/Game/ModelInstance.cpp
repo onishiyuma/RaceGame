@@ -2,8 +2,15 @@
 #include "ModelInstance.h"
 #include"ModelAssetDefinition.h"
 
-bool ModelInstance::Init(const ModelAssetDefinition& asset)
+bool ModelInstance::Init(
+	const ModelAssetDefinition& asset,
+	bool isShadowCaster,
+	bool isShadowReceiver,
+	EnModelUpAxis enModelUpAxis,
+	AlphaBlendMode alphaBlendMode)
 {
+	//今は再初期化には対応してない。
+
 	//tkmを取得する。
 	TkmFile* tkmFile =
 		g_resourceManager->GetTkm(
@@ -31,6 +38,8 @@ bool ModelInstance::Init(const ModelAssetDefinition& asset)
 		}
 	}
 
+	m_animationIndices.clear();
+	m_animationClips.reset();
 
 	m_numAnimationClips = static_cast<int>(asset.animations.size());
 
@@ -61,11 +70,16 @@ bool ModelInstance::Init(const ModelAssetDefinition& asset)
 		}
 	}
 
+	//TODO:モデルレンダーを再初期化できるようにしたい。
 	m_modelRender.Init(
 		tkmFile,
 		tksFile,
 		m_animationClips.get(),
-		m_numAnimationClips
+		m_numAnimationClips,
+		enModelUpAxis,
+		isShadowCaster,
+		isShadowReceiver,
+		alphaBlendMode
 	);
 
 	return true;

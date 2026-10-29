@@ -7,7 +7,22 @@ struct  ModelAssetDefinition;
 class ModelInstance
 {
 public:
-	bool Init(const ModelAssetDefinition& asset);
+	/// <summary>
+	/// 初期化。
+	/// 今は再初期化には対応してない。
+	/// </summary>
+	/// <param name="asset"></param>
+	/// <param name="isShadowCaster"></param>
+	/// <param name="isShadowReceiver"></param>
+	/// <param name="enModelUpAxis"></param>
+	/// <param name="alphaBlendMode"></param>
+	/// <returns></returns>
+	bool Init(
+		const ModelAssetDefinition& asset,
+		bool isShadowCaster = false,
+		bool isShadowReceiver = false,
+		EnModelUpAxis enModelUpAxis = enModelUpAxisY,
+		AlphaBlendMode alphaBlendMode = AlphaBlendMode_None);
 
 	void SetTRS(
 		const Vector3& position,
