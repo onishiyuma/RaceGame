@@ -11,7 +11,7 @@
 bool DebugScene::OnLoad()
 {
 	// アセットIDとアセットの対応表を読み込む。
-	m_assetDatabase.Init("Assets/assetsData/Course01Assets.json");
+	m_assetDatabase.LoadDefinitions("Assets/assetsData/Course01Assets.json");
 
 	// ステージ配置情報を読み込む。
 	LoadStageDefinition(

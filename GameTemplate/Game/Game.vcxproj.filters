@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="system">
@@ -33,7 +33,7 @@
       <Filter>Stage</Filter>
     </ClCompile>
     <ClCompile Include="Stage\StageObjectFactory.cpp" />
-    <ClCompile Include="Stage\ModelInstance.cpp">
+    <ClCompile Include="ModelInstance.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
     <ClCompile Include="Stage\Object\Prop.cpp">
@@ -78,10 +78,10 @@
       <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\StageObjectFactory.h" />
-    <ClInclude Include="Stage\ModelAssetDefinition.h">
+    <ClInclude Include="ModelAssetDefinition.h">
       <Filter>Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Stage\ModelInstance.h">
+    <ClInclude Include="ModelInstance.h">
       <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\Object\Prop.h">

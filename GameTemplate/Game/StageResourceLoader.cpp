@@ -1,8 +1,8 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "StageResourceLoader.h"
 #include"AssetDatabase.h"
 #include "ResourceManager.h"
-#include "Stage/ModelAssetDefinition.h"
+#include "ModelAssetDefinition.h"
 #include "ModelResourceLoader.h"
 
 bool LoadStageResources(const StageDefinition& stageDefinition, const AssetDatabase& assetDatabase)

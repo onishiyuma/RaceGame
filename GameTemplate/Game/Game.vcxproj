@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -236,7 +236,7 @@
     <ClCompile Include="Stage\Stage.cpp" />
     <ClCompile Include="Stage\StageBuilder.cpp" />
     <ClCompile Include="Stage\StageLoader\StageLoader.cpp" />
-    <ClCompile Include="Stage\ModelInstance.cpp" />
+    <ClCompile Include="ModelInstance.cpp" />
     <ClCompile Include="Stage\StageObject.cpp" />
     <ClCompile Include="Stage\StageObjectFactory.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -262,8 +262,8 @@
     <ClInclude Include="Stage\StageLoader\StageDefinition.h" />
     <ClInclude Include="Stage\StageLoader\StageLoader.h" />
     <ClInclude Include="Stage\StageLoader\TransformHelper.h" />
-    <ClInclude Include="Stage\ModelAssetDefinition.h" />
-    <ClInclude Include="Stage\ModelInstance.h" />
+    <ClInclude Include="ModelAssetDefinition.h" />
+    <ClInclude Include="ModelInstance.h" />
     <ClInclude Include="Stage\StageObject.h" />
     <ClInclude Include="Stage\StageObjectFactory.h" />
     <ClInclude Include="stdafx.h" />

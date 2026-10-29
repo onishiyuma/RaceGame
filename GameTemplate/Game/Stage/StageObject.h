@@ -1,5 +1,5 @@
 #pragma once
-#include"Stage/ModelInstance.h"
+#include"ModelInstance.h"
 #include"Json/json.hpp"
 
 struct ObjectDefinition;
