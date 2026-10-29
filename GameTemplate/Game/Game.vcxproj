@@ -271,10 +271,18 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\k2Engine\k2Engine.vcxproj">
-      <Project>{dd0c2b00-a78a-4c42-9ab6-d54b3ac1ce10}</Project>
+      <Project>{dd0c2b00-a78a-4c42-9ab6-d54b3ac1ce10}  <ItemGroup>
+    <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
+    <ClInclude Include="Stage\Object\SpawnPoint.h" />
+  </ItemGroup>
+</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
+    <ClInclude Include="Stage\Object\SpawnPoint.h" />
+  </ItemGroup>
 </Project>
