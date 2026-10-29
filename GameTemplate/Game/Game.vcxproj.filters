@@ -116,4 +116,15 @@
     <ClCompile Include="Src\Car\CarResourceLoader.cpp" />
     <ClInclude Include="Src\Car\CarResourceLoader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Car\Car.cpp" />
+    <ClInclude Include="Src\Car\Car.h" />
+    <ClCompile Include="Src\Car\CarVisual.cpp" />
+    <ClInclude Include="Src\Car\CarVisual.h" />
+    <ClCompile Include="Src\Car\CarManager.cpp" />
+    <ClInclude Include="Src\Car\CarManager.h" />
+    <ClInclude Include="Src\Car\CarInput.h" />
+    <ClInclude Include="Src\Car\CarPerformance.h" />
+    <ClInclude Include="Src\Car\CarPhysicsState.h" />
+  </ItemGroup>
 </Project>
