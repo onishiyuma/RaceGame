@@ -272,39 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\k2Engine\k2Engine.vcxproj">
-      <Project>{dd0c2b00-a78a-4c42-9ab6-d54b3ac1ce10}  <ItemGroup>
-    <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
-    <ClInclude Include="Stage\Object\SpawnPoint.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Src\Car\CarDefinition.h" />
-    <ClCompile Include="Src\Car\CarDatabase.cpp" />
-    <ClInclude Include="Src\Car\CarDatabase.h" />
-    <ClCompile Include="Src\Car\CarResourceLoader.cpp" />
-    <ClInclude Include="Src\Car\CarResourceLoader.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Src\Car\Car.cpp" />
-    <ClInclude Include="Src\Car\Car.h" />
-    <ClCompile Include="Src\Car\CarVisual.cpp" />
-    <ClInclude Include="Src\Car\CarVisual.h" />
-    <ClCompile Include="Src\Car\CarManager.cpp" />
-    <ClInclude Include="Src\Car\CarManager.h" />
-    <ClInclude Include="Src\Car\CarInput.h" />
-    <ClInclude Include="Src\Car\CarPerformance.h" />
-    <ClInclude Include="Src\Car\CarPhysicsState.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Src\Race\RaceEntryBuilder.cpp" />
-    <ClInclude Include="Src\Race\RaceEntryBuilder.h" />
-    <ClInclude Include="Src\Race\RaceEntryDefinition.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Src\Car\CarController\ICarController.h" />
-    <ClCompile Include="Src\Car\CarController\PlayerController.cpp" />
-    <ClInclude Include="Src\Car\CarController\PlayerController.h" />
-  </ItemGroup>
-</Project>
+      <Project>{dd0c2b00-a78a-4c42-9ab6-d54b3ac1ce10}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
