@@ -1,6 +1,11 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 
+// Windows.h‚Ìmin/maxƒ}ƒNƒ‚ğ–³Œø‚É‚·‚éB
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 #include "k2EnginePreCompile.h"
 using namespace nsK2EngineLow;
 using namespace nsK2Engine;
