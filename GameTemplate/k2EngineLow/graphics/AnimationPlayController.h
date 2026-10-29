@@ -3,6 +3,7 @@
 */
 
 #pragma once
+#include <algorithm>
 
 
 namespace nsK2EngineLow {
@@ -72,7 +73,7 @@ namespace nsK2EngineLow {
 			if (m_interpolateEndTime <= 0.0f) {
 				return 1.0f;
 			}
-			return min(1.0f, m_interpolateTime / m_interpolateEndTime);
+			return (std::min)(1.0f, m_interpolateTime / m_interpolateEndTime);
 		}
 		
 		/// <summary>
