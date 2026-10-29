@@ -105,4 +105,8 @@
     <ClInclude Include="AssetDatabase.h" />
     <ClInclude Include="ModelResourceLoader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
+    <ClInclude Include="Stage\Object\SpawnPoint.h" />
+  </ItemGroup>
 </Project>

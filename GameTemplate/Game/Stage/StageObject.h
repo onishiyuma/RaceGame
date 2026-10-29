@@ -21,6 +21,30 @@ public:
 
 	void Render(RenderContext& rc);
 
+	/// <summary>
+	/// オブジェクトの位置を取得する。
+	/// </summary>
+	const Vector3& GetPosition() const
+	{
+		return m_position;
+	}
+
+	/// <summary>
+	/// オブジェクトの回転を取得する。
+	/// </summary>
+	const Quaternion& GetRotation() const
+	{
+		return m_rotation;
+	}
+
+	/// <summary>
+	/// オブジェクトの拡大率を取得する。
+	/// </summary>
+	const Vector3& GetScale() const
+	{
+		return m_scale;
+	}
+
 protected:
 	/// <summary>
 	/// 派生クラスでオブジェクトの初期化を行うための仮想関数。
@@ -62,8 +86,8 @@ protected:
 	}
 
 	/// <summary>
-/// オブジェクトの位置を設定する。
-/// </summary>
+	/// オブジェクトの位置を設定する。
+	/// </summary>
 	void SetPosition(const Vector3& position)
 	{
 		m_position = position;
@@ -88,29 +112,6 @@ protected:
 		UpdateModelTransform();
 	}
 
-	/// <summary>
-	/// オブジェクトの位置を取得する。
-	/// </summary>
-	const Vector3& GetPosition() const
-	{
-		return m_position;
-	}
-
-	/// <summary>
-	/// オブジェクトの回転を取得する。
-	/// </summary>
-	const Quaternion& GetRotation() const
-	{
-		return m_rotation;
-	}
-
-	/// <summary>
-	/// オブジェクトの拡大率を取得する。
-	/// </summary>
-	const Vector3& GetScale() const
-	{
-		return m_scale;
-	}
 
 private:
 	/// <summary>

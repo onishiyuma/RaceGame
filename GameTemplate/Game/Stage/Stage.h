@@ -35,6 +35,28 @@ public:
 		m_objects.clear();
 	}
 
+	/// <summary>
+	/// 指定の型のステージオブジェクトを取得する。
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <returns></returns>
+	template<typename T>
+	std::vector<const T*> GetObjectsOfType() const
+	{
+		std::vector<const T*> result;
+
+		for (const auto& object : m_objects)
+		{
+			if (const auto* target =
+				dynamic_cast<const T*>(object.get()))
+			{
+				result.push_back(target);
+			}
+		}
+
+		return result;
+	}
+
 private:
 	// Prop / BoostPad / ItemBox など
 	std::vector<std::unique_ptr<StageObject>> m_objects;

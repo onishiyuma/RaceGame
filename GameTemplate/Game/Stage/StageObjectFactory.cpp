@@ -3,6 +3,7 @@
 #include "Stage/StageLoader/StageDefinition.h"
 #include "AssetDatabase.h"
 #include "Stage/Object/Prop.h"
+#include "Stage/Object/SpawnPoint.h"
 
 
 
@@ -21,8 +22,7 @@ StageObjectFactory::StageObjectFactory()
 
 	m_creators["SpawnPoint"] = []
 		{
-			//return std::make_unique<SpawnPoint>();
-			return  std::make_unique<StageObject>();
+			return std::make_unique<SpawnPoint>();
 		};
 
 	m_creators["BoostPad"] = []

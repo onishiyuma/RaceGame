@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum StageObjectType
@@ -19,6 +20,8 @@ public class StageObjectInfo : MonoBehaviour
 
     [Tooltip("JSONへ出力するID。空の場合は同じGameObjectのMesh名を使用します。")]
     public string assetId = "";
+
+    public List<StageProperty> properties = new List<StageProperty>();
 
     // Keep the original exporter rule: only the MeshFilter on this object.
     public Mesh GetAssetMesh()
