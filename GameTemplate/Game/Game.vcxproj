@@ -293,6 +293,11 @@
     <ClInclude Include="Src\Car\CarPerformance.h" />
     <ClInclude Include="Src\Car\CarPhysicsState.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Race\RaceEntryBuilder.cpp" />
+    <ClInclude Include="Src\Race\RaceEntryBuilder.h" />
+    <ClInclude Include="Src\Race\RaceEntryDefinition.h" />
+  </ItemGroup>
 </Project>
     </ProjectReference>
   </ItemGroup>
@@ -320,5 +325,10 @@
     <ClInclude Include="Src\Car\CarInput.h" />
     <ClInclude Include="Src\Car\CarPerformance.h" />
     <ClInclude Include="Src\Car\CarPhysicsState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Race\RaceEntryBuilder.cpp" />
+    <ClInclude Include="Src\Race\RaceEntryBuilder.h" />
+    <ClInclude Include="Src\Race\RaceEntryDefinition.h" />
   </ItemGroup>
 </Project>

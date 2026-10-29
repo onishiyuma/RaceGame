@@ -3,6 +3,10 @@
 #include "AssetDatabase.h"
 #include "Stage/StageLoader/StageDefinition.h"
 #include "Stage/Stage.h"
+#include "Src/Car/CarDatabase.h"
+#include "Src/Race/RaceEntryDefinition.h"
+#include "Src/Car/Car.h"
+#include "Src/Car/CarManager.h"
 
 /// <summary>
 /// ステージやカメラ操作などの動作確認を行うデバッグシーン。
@@ -52,7 +56,9 @@ private:
 
 private:
 	AssetDatabase m_assetDatabase;
+	CarDatabase m_carDatabase;
 	StageDefinition m_stageDefinition;
-
 	std::unique_ptr<Stage> m_stage;
+	std::vector<RaceEntryDefinition> m_raceEntries;			//レース参加者の構成情報。
+	CarManager m_carManager;								//車を管理するクラス。
 };
