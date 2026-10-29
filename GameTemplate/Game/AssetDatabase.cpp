@@ -3,7 +3,7 @@
 #include "json/json.hpp"
 #include <fstream>
 
-bool AssetDatabase::Init(const std::string& filePath)
+bool AssetDatabase::LoadDefinitions(const std::string& filePath)
 {
 	std::ifstream file(filePath);
 

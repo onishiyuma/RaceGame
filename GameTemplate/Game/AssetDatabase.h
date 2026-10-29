@@ -2,7 +2,7 @@
 #include "ModelAssetDefinition.h"
 
 /// <summary>
-/// ステージで使用するアセットIDと
+/// アセットIDと
 /// アセット情報（モデル、スケルトン、アニメーションなど）の対応を管理するクラス。
 /// JSONファイルから対応表を読み込み、アセットIDからアセット情報を取得する。
 ///
@@ -18,7 +18,7 @@ public:
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	bool Init(const std::string& filePath);
+	bool LoadDefinitions(const std::string& filePath);
 
 	/// <summary>
 	/// アセットIDから対応するアセット情報を取得する。
