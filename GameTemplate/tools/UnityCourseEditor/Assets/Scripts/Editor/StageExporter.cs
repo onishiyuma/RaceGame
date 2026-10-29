@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Newtonsoft.Json;
 
 [Serializable]
 public class StageData
@@ -20,6 +21,7 @@ public class ObjectDefinition
     public Vector3Data position;
     public QuaternionData rotation;
     public Vector3Data scale;
+    public Dictionary<string, object> properties = new Dictionary<string, object>();
 }
 
 [Serializable]
@@ -89,11 +91,47 @@ public static class StageExporter
             definition.scale =
                 new Vector3Data(transform.lossyScale);
 
+            foreach (StageProperty property in stageObject.properties)
+            {
+                if (string.IsNullOrWhiteSpace(property.key))
+                {
+                    Debug.LogError(
+                        $"{stageObject.name}: プロパティ名が空です。"
+                    );
+                    return;
+                }
+
+                if (!definition.properties.TryAdd(
+                    property.key,
+                    property.GetValue()))
+                {
+                    Debug.LogError(
+                        $"{stageObject.name}: プロパティ名が重複しています: {property.key}"
+                    );
+                    return;
+                }
+            }
+
+            // スポーン地点のIDが未設定ならオブジェクト名を使用する。
+            if (stageObject.type == StageObjectType.SpawnPoint)
+            {
+                if (!definition.properties.ContainsKey("spawnPointId"))
+                {
+                    definition.properties.Add(
+                        "spawnPointId",
+                        stageObject.gameObject.name
+                    );
+                }
+            }
+
             stageData.objects.Add(definition);
         }
 
         string json =
-            JsonUtility.ToJson(stageData, true);
+            JsonConvert.SerializeObject(
+                stageData,
+                Formatting.Indented
+            );
 
         string path =
             EditorUtility.SaveFilePanel(
