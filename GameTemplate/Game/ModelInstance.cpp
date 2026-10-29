@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ModelInstance.h"
-#include"Stage/ModelAssetDefinition.h"
+#include"ModelAssetDefinition.h"
 
 bool ModelInstance::Init(const ModelAssetDefinition& asset)
 {

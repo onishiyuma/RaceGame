@@ -1,5 +1,5 @@
 #pragma once
-#include "Stage/ModelAssetDefinition.h"
+#include "ModelAssetDefinition.h"
 
 /// <summary>
 /// ステージで使用するアセットIDと
