@@ -275,6 +275,13 @@
     <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
     <ClInclude Include="Stage\Object\SpawnPoint.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Car\CarDefinition.h" />
+    <ClCompile Include="Src\Car\CarDatabase.cpp" />
+    <ClInclude Include="Src\Car\CarDatabase.h" />
+    <ClCompile Include="Src\Car\CarResourceLoader.cpp" />
+    <ClInclude Include="Src\Car\CarResourceLoader.h" />
+  </ItemGroup>
 </Project>
     </ProjectReference>
   </ItemGroup>
@@ -284,5 +291,12 @@
   <ItemGroup>
     <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
     <ClInclude Include="Stage\Object\SpawnPoint.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Car\CarDefinition.h" />
+    <ClCompile Include="Src\Car\CarDatabase.cpp" />
+    <ClInclude Include="Src\Car\CarDatabase.h" />
+    <ClCompile Include="Src\Car\CarResourceLoader.cpp" />
+    <ClInclude Include="Src\Car\CarResourceLoader.h" />
   </ItemGroup>
 </Project>
