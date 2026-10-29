@@ -14,6 +14,7 @@ namespace nsK2Engine
 		bool isShadowReceiver,
 		AlphaBlendMode alphaBlendMode)
 	{
+		//TODO:再初期化できるようにする。
 		//スケルトンの初期化
 		InitSkeleton(tksFile);
 		//アニメーションの初期化
@@ -166,18 +167,23 @@ namespace nsK2Engine
 	//更新処理
 	void ModelRender::Update()
 	{
-		//スケルトンを更新
-		if (m_skeleton.IsInited()) {
-			m_skeleton.Update(m_model.GetWorldMatrix());
-		}
+		//TODO:更新処理の順番を変えたからここらへんでバグったら順番変えたのが原因かも。
 
-		//モデルの更新
+
+		// モデルのワールド行列を更新する。
 		m_model.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-		//ワールド行列の更新
 		m_shadowModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 
-		//アニメーションを進める
-		m_animation.Progress(g_gameTime->GetFrameDeltaTime() * m_animationSpeed);
+		// アニメーションからボーンのローカル行列を更新する。
+		m_animation.Progress(
+			g_gameTime->GetFrameDeltaTime() * m_animationSpeed
+		);
+
+		// 更新されたボーンのローカル行列をワールド空間に反映する。
+		if (m_skeleton.IsInited())
+		{
+			m_skeleton.Update(m_model.GetWorldMatrix());
+		}
 	}
 
 	//更新処理
