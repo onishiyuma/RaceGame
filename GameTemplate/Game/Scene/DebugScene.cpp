@@ -10,7 +10,7 @@
 #include "Src/Car/CarResourceLoader.h"
 #include "Src/Race/RaceEntryBuilder.h"
 #include "Stage/Object/SpawnPoint.h"
-
+#include "Src/Car/CarController/PlayerController.h"
 
 bool DebugScene::OnLoad()
 {
@@ -172,6 +172,19 @@ bool DebugScene::OnInit()
 			return false;
 		}
 
+		// TODO:今後プレイヤーの参加情報から操作対象の車を決定するようにする。
+		// 今はは先頭の車をプレイヤーとして扱っている。
+		if (m_raceEntries.empty() || g_pad[0] == nullptr)
+		{
+			return false;
+		}
+
+		//プレイヤーのインスタンスIDを取得する。
+		m_playerCarInstanceId = m_raceEntries.front().instanceId;
+
+		// プレイヤーのコントローラーを作成する。
+		m_playerController =
+			std::make_unique<PlayerController>(*g_pad[0]);
 
 	}
 
@@ -199,6 +212,18 @@ void DebugScene::OnUpdate()
 	std::unordered_map<std::string, CarInput> inputs;
 
 	// プレイヤーが操作する車の入力を取得する。
+	if (m_playerController)
+	{
+		const Car* car = m_carManager.FindCar(m_playerCarInstanceId);
+
+		if (car != nullptr)
+		{
+			inputs.emplace(
+				m_playerCarInstanceId,
+				m_playerController->GetInput(*car)
+			);
+		}
+	}
 
 	// 管理しているすべての車を更新する。
 	m_carManager.Update(inputs);
@@ -217,6 +242,8 @@ void DebugScene::OnRender(RenderContext& renderContext)
 void DebugScene::OnUnload()
 {
 	// プレイヤーの操作情報を破棄する。
+	m_playerController.reset();
+	m_playerCarInstanceId.clear();
 
 	// 車を破棄する。
 	m_carManager.Clear();

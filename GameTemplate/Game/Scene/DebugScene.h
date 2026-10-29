@@ -8,6 +8,7 @@
 #include "Src/Car/Car.h"
 #include "Src/Car/CarManager.h"
 
+#include "Src/Car/CarController/PlayerController.h"
 /// <summary>
 /// ステージやカメラ操作などの動作確認を行うデバッグシーン。
 /// </summary>
@@ -61,4 +62,6 @@ private:
 	std::unique_ptr<Stage> m_stage;
 	std::vector<RaceEntryDefinition> m_raceEntries;			//レース参加者の構成情報。
 	CarManager m_carManager;								//車を管理するクラス。
+	std::unique_ptr<PlayerController> m_playerController;	// プレイヤーの操作を管理する。
+	std::string m_playerCarInstanceId;						// プレイヤーが操作する車のインスタンスID。
 };

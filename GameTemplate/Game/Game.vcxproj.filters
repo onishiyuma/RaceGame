@@ -132,4 +132,9 @@
     <ClInclude Include="Src\Race\RaceEntryBuilder.h" />
     <ClInclude Include="Src\Race\RaceEntryDefinition.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Car\CarController\ICarController.h" />
+    <ClCompile Include="Src\Car\CarController\PlayerController.cpp" />
+    <ClInclude Include="Src\Car\CarController\PlayerController.h" />
+  </ItemGroup>
 </Project>
