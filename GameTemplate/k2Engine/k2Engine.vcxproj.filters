@@ -51,6 +51,7 @@
     <ClCompile Include="level3DRender\Level3DRender.cpp" />
     <ClCompile Include="graphics\postEffect\Tone.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="time\DelayTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="k2EnginePreCompile.h" />
@@ -68,5 +69,6 @@
     <ClInclude Include="level3DRender\Level3DRender.h" />
     <ClInclude Include="graphics\postEffect\Tone.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="time\DelayTime.h" />
   </ItemGroup>
 </Project>

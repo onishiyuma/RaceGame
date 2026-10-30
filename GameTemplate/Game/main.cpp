@@ -9,6 +9,7 @@
 #include"Stage/StageBuilder.h"
 #include"Scene/SceneManager.h"
 #include"Scene/DebugScene.h"
+#include "Scene/TitleScene.h"
 
 // K2EngineLowのグローバルアクセスポイント。
 K2EngineLow* g_k2EngineLow = nullptr;
@@ -21,11 +22,15 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	// ゲームの初期化。
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, TEXT("Game"));
 
-	//シーンマネージャーの作成。
 	SceneManager* sceneManager = NewGO<SceneManager>(0);
-	sceneManager->Init(std::make_unique<DebugScene>());
+	sceneManager->Init(std::make_unique<TitleScene>());
 
 	UIManager::CreateInstance();
+
+	FadeManager::CreateInstance();
+	LoadingManager::CreateInstance();
+	FadeManager::GetInstance()->SetTargetFede(LoadingManager::GetInstance()->GetBackGround());
+	FadeManager::GetInstance()->SetTargetFede(LoadingManager::GetInstance()->GetLoadingTire());
 
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
@@ -34,6 +39,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 		UIManager::GetInstance()->Update();
 		UIManager::GetInstance()->Render(g_graphicsEngine->GetRenderContext());
+
+		FadeManager::GetInstance()->Update();
+
+		LoadingManager::GetInstance()->Update();
+		LoadingManager::GetInstance()->Render(g_graphicsEngine->GetRenderContext());
 	}
 
 	K2Engine::DeleteInstance();

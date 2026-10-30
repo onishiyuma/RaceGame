@@ -21,6 +21,21 @@ void UIAnimationBase::Update()
 		return;
 	}
 
+	if (m_isLoop && m_isCompleted)
+	{
+		/*終了後の遅延時間があるか？*/
+		/*ある場合は、遅延時間を減らしていく。*/
+		if (m_endDelayTime > 0.0f)
+		{
+			m_endDelayTime -= g_gameTime->GetFrameDeltaTime();
+			return;
+		}
+	}
+	else if (m_isLoop && !m_isCompleted)
+	{
+		m_endDelayTime = m_endDeleyTimeMax;
+	}
+
 	/*繰り返し実行するか？*/
 	if (!m_isLoop && m_isCompleted)
 	{
@@ -70,6 +85,10 @@ void UIAnimationBase::Update()
 			/*完了。*/
 			m_isCompleted = true;
 		}
+		else
+		{
+			m_isCompleted = false;
+		}
 	}
 	else if(m_isReverse)
 	{
@@ -88,6 +107,10 @@ void UIAnimationBase::Update()
 
 			/*完了。*/
 			m_isCompleted = true;
+		}
+		else
+		{
+			m_isCompleted = false;
 		}
 	}
 }

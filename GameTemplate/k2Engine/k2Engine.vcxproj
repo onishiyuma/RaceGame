@@ -46,6 +46,7 @@
     <ClCompile Include="nature\SkyCube.cpp" />
     <ClCompile Include="graphics\postEffect\Tone.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="time\DelayTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="collision\CollisionObject.h" />
@@ -63,6 +64,7 @@
     <ClInclude Include="nature\SkyCube.h" />
     <ClInclude Include="graphics\postEffect\Tone.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="time\DelayTime.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
