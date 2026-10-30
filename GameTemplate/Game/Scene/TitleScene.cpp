@@ -33,7 +33,7 @@ bool TitleScene::OnInit()
 void TitleScene::OnUpdate()
 {
 	/*ƒ[ƒh‚µ‚Ä‚¢‚éê‡‚Íˆ—‚µ‚È‚¢B*/
-	if (LoadingManager::GetInstance()->IsLoading())
+	if (LoadingUI::GetInstance()->IsLoading())
 	{
 		if (FadeManager::GetInstance()->IsEnd(FadeManager::enFade_Out))
 		{
@@ -264,8 +264,8 @@ void TitleScene::Select()
 	if (g_pad[0]->IsTrigger(enButtonA))
 	{
 		FadeManager::GetInstance()->ChangeFade(FadeManager::enFade_Out);
-		FadeManager::GetInstance()->SetTargetFede(LoadingManager::GetInstance()->GetBackGround());
-		FadeManager::GetInstance()->SetTargetFede(LoadingManager::GetInstance()->GetLoadingTire());
+		FadeManager::GetInstance()->SetTargetFede(LoadingUI::GetInstance()->GetBackGround());
+		FadeManager::GetInstance()->SetTargetFede(LoadingUI::GetInstance()->GetLoadingTire());
 		return;
 	}
 

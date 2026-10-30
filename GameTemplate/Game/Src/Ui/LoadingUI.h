@@ -1,19 +1,19 @@
 #pragma once
 /**
- * @file LoadingManager.h。
- * @brief ローディングマネージャークラス。
+ * @file LoadingUI.h。
+ * @brief ローディングUIクラス。
  * @author Tanimoto。
  * @date 2026/10/20。
  */
 
-/*ローディングを管理するクラス。*/
-class LoadingManager : public Noncopyable
+/*ローディングUIクラス。*/
+class LoadingUI : public Noncopyable
 {
 private:
-	LoadingManager() {};/*コンストラクタ。*/
+	LoadingUI() {};/*コンストラクタ。*/
 
 public:
-	~LoadingManager() {};/*デストラクタ。*/
+	~LoadingUI() {};/*デストラクタ。*/
 
 public:
 	bool Start();/*開始処理。*/
@@ -49,7 +49,7 @@ public:/*シングルトン用のメンバ関数。*/
 	inline static void CreateInstance()
 	{
 		if (m_instance != nullptr) { return; }
-		m_instance = new LoadingManager();
+		m_instance = new LoadingUI();
 		m_instance->Start();
 	}
 
@@ -67,7 +67,7 @@ public:/*シングルトン用のメンバ関数。*/
 	 * @brief シングルトンインスタンスの取得。
 	 * @return シングルトンインスタンス。
 	 */
-	inline static LoadingManager* GetInstance()
+	inline static LoadingUI* GetInstance()
 	{
 		return m_instance;
 	}
@@ -79,6 +79,6 @@ private:/*メンバ変数。*/
 	std::unique_ptr<PositionUIAnimation> m_vibrationAnimation;/*振動アニメーション。*/
 
 private:/*シングルトンインスタンス。*/
-	static LoadingManager* m_instance;/*シングルトンインスタンス。*/
+	static LoadingUI* m_instance;/*シングルトンインスタンス。*/
 };
 

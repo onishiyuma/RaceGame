@@ -233,7 +233,7 @@
     <ClCompile Include="Scene\DebugScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Fade\FadeManager.cpp" />
-    <ClCompile Include="Src\Load\LoadingManager.cpp" />
+    <ClCompile Include="Src\Ui\LoadingUI.cpp" />
     <ClCompile Include="Src\Ui\UIAnimation.cpp" />
     <ClCompile Include="Src\Ui\UIAnimationSequence.cpp" />
     <ClCompile Include="Src\Ui\UIManager.cpp" />
@@ -261,7 +261,7 @@
     <ClInclude Include="Scene\IScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Src\Fade\FadeManager.h" />
-    <ClInclude Include="Src\Load\LoadingManager.h" />
+    <ClInclude Include="Src\Ui\LoadingUI.h" />
     <ClInclude Include="Src\Ui\UIAnimation.h" />
     <ClInclude Include="Src\Ui\UIAnimationSequence.h" />
     <ClInclude Include="Src\Ui\UIManager.h" />
