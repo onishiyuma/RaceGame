@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "DebugScene.h"
 #include <cmath>
 #include "system/system.h"
@@ -17,11 +17,11 @@ bool DebugScene::OnLoad()
 	//ステージをロードする
 	{
 		// コースのアセットIDとアセットの対応表を読み込む。
-		if (!m_assetDatabase.LoadDefinitions("Assets/assetsData/Course01Assets.json"))return false;
+		if (!m_assetDatabase.LoadDefinitions("Assets/assetsData/PhysicsDebugAssets.json"))return false;
 
 		// ステージ配置情報を読み込む。
 		if (!LoadStageDefinition(
-			"Assets/stage/Course01.json",
+			"Assets/stage/PhysicsDebugStage.json",
 			m_stageDefinition
 		))return false;
 
@@ -193,15 +193,19 @@ bool DebugScene::OnInit()
 
 void DebugScene::OnActivate()
 {
+	auto* physics = nsK2EngineLow::PhysicsWorld::GetInstance();
+	const auto gravity = physics->GetDynamicWorld()->getGravity();
+	m_previousGravity = Vector3(gravity.x(), gravity.y(), gravity.z());
+	physics->SetGravity(Vector3(0.0f, -15.0f, 0.0f));
+	nsK2EngineLow::PhysicsWorld::GetInstance()->EnableDrawDebugWireFrame();
 	// デバッグカメラの遠クリップ距離を設定する。
 	constexpr float debugFarClip = 50000.0f;
 	g_camera3D->SetFar(debugFarClip);
+	UpdateDebugCamera();
 }
 
-void DebugScene::OnUpdate()
+void DebugScene::OnUpdate(float deltaTime)
 {
-	UpdateDebugCamera();
-
 	// ステージ上のオブジェクトを更新する。
 	if (m_stage)
 	{
@@ -220,13 +224,19 @@ void DebugScene::OnUpdate()
 		{
 			inputs.emplace(
 				m_playerCarInstanceId,
-				m_playerController->GetInput(*car)
+				m_playerController->GetInput()
 			);
 		}
 	}
 
 	// 管理しているすべての車を更新する。
-	m_carManager.Update(inputs);
+	m_carManager.Update(inputs, deltaTime);
+}
+
+void DebugScene::OnPostPhysicsUpdate()
+{
+	m_carManager.PostPhysicsUpdate();
+	UpdateDebugCamera();
 }
 
 void DebugScene::OnRender(RenderContext& renderContext)
@@ -237,6 +247,12 @@ void DebugScene::OnRender(RenderContext& renderContext)
 	}
 
 	m_carManager.Draw(renderContext);
+}
+
+void DebugScene::OnDeactivate()
+{
+	nsK2EngineLow::PhysicsWorld::GetInstance()->SetGravity(m_previousGravity);
+	nsK2EngineLow::PhysicsWorld::GetInstance()->DisableDrawDebugWireFrame();
 }
 
 void DebugScene::OnUnload()
@@ -254,94 +270,11 @@ void DebugScene::OnUnload()
 
 void DebugScene::UpdateDebugCamera()
 {
-	// ウィンドウがアクティブでなければ操作しない。
-	if (GetForegroundWindow() != g_hWnd)return;
+	const Car* car = m_carManager.FindCar(m_playerCarInstanceId);
+	if (car == nullptr) return;
 
-	const auto isKeyDown = [](int key)
-		{
-			return (GetAsyncKeyState(key) & 0x8000) != 0;
-		};
-
-	const float deltaTime = g_gameTime->GetFrameDeltaTime();
-	const float cameraDeltaTime =
-		deltaTime < 0.05f ? deltaTime : 0.05f;
-
-	// 矢印キーによる視点の回転。
-	const float yawInput =
-		(isKeyDown(VK_RIGHT) ? 1.0f : 0.0f)
-		- (isKeyDown(VK_LEFT) ? 1.0f : 0.0f);
-
-	const float pitchInput =
-		(isKeyDown(VK_UP) ? 1.0f : 0.0f)
-		- (isKeyDown(VK_DOWN) ? 1.0f : 0.0f);
-
-	if (yawInput != 0.0f || pitchInput != 0.0f)
-	{
-		const Vector3 look =
-			g_camera3D->GetTarget() - g_camera3D->GetPosition();
-
-		const float lookDistance = look.Length();
-
-		if (lookDistance > 0.000001f)
-		{
-			const float turnSpeed = Math::DegToRad(90.0f);
-
-			const float yaw =
-				std::atan2(look.x, look.z)
-				+ yawInput * turnSpeed * cameraDeltaTime;
-
-			float pitch =
-				std::atan2(
-					look.y,
-					std::sqrt(look.x * look.x + look.z * look.z)
-				)
-				+ pitchInput * turnSpeed * cameraDeltaTime;
-
-			const float pitchLimit = Math::DegToRad(85.0f);
-
-			if (pitch > pitchLimit) pitch = pitchLimit;
-			if (pitch < -pitchLimit) pitch = -pitchLimit;
-
-			const Vector3 direction(
-				std::sin(yaw) * std::cos(pitch),
-				std::sin(pitch),
-				std::cos(yaw) * std::cos(pitch)
-			);
-
-			g_camera3D->SetTarget(
-				g_camera3D->GetPosition()
-				+ direction * lookDistance
-			);
-
-			// 回転後の移動方向を更新する。
-			g_camera3D->Update();
-		}
-	}
-
-	// WASD・QEによるカメラ移動。
-	Vector3 movement = Vector3::Zero;
-
-	if (isKeyDown('W')) movement += g_camera3D->GetForward();
-	if (isKeyDown('S')) movement -= g_camera3D->GetForward();
-	if (isKeyDown('D')) movement += g_camera3D->GetRight();
-	if (isKeyDown('A')) movement -= g_camera3D->GetRight();
-	if (isKeyDown('E')) movement.y += 1.0f;
-	if (isKeyDown('Q')) movement.y -= 1.0f;
-
-	if (movement.LengthSq() > 0.000001f)
-	{
-		const float moveSpeed =
-			isKeyDown(VK_SHIFT) ? 500.0f : 100.0f;
-
-		movement.Normalize();
-		movement *= moveSpeed * cameraDeltaTime;
-
-		g_camera3D->SetPosition(
-			g_camera3D->GetPosition() + movement
-		);
-
-		g_camera3D->SetTarget(
-			g_camera3D->GetTarget() + movement
-		);
-	}
+	const Vector3& position = car->GetPosition();
+	g_camera3D->SetPosition(position + Vector3(120.0f, 75.0f, -180.0f));
+	g_camera3D->SetTarget(position);
+	g_camera3D->Update();
 }

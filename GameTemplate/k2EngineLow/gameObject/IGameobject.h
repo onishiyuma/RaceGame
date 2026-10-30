@@ -18,8 +18,7 @@ namespace nsK2EngineLow {
 			*@brief	デストラクタ
 			*/
 		virtual ~IGameObject()
-		{
-		}
+		{}
 	public:
 
 
@@ -44,6 +43,11 @@ namespace nsK2EngineLow {
 		{
 			(void)renderContext;
 		}
+
+		/// <summary>
+		/// 物理エンジンの更新後に呼ばれる。
+		/// </summary>
+		virtual void PostPhysicsUpdate() {}
 
 	public:
 		/*!
@@ -134,6 +138,13 @@ namespace nsK2EngineLow {
 					//初期化処理完了。
 					m_isStart = true;
 				}
+			}
+		}
+
+		void PostPhysicsUpdateWrapper()
+		{
+			if (m_isActive && m_isStart && !m_isDead) {
+				PostPhysicsUpdate();
 			}
 		}
 		friend class CGameObjectManager;

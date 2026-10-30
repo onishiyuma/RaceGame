@@ -171,8 +171,7 @@ namespace nsK2Engine
 
 
 		// モデルのワールド行列を更新する。
-		m_model.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-		m_shadowModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+		UpdateTransform();
 
 		// アニメーションからボーンのローカル行列を更新する。
 		m_animation.Progress(
@@ -184,6 +183,12 @@ namespace nsK2Engine
 		{
 			m_skeleton.Update(m_model.GetWorldMatrix());
 		}
+	}
+
+	void ModelRender::UpdateTransform()
+	{
+		m_model.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+		m_shadowModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 	}
 
 	//更新処理

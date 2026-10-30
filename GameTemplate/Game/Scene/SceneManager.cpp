@@ -41,17 +41,31 @@ bool SceneManager::Init(std::unique_ptr<IScene> firstScene)
 
 void SceneManager::Update()
 {
+	const float deltaTime = g_gameTime->GetFrameDeltaTime();
+
 	// 通常時だけ更新する。
 	if (m_transitionState == TransitionState::Idle)
 	{
 		if (IScene* currentScene = GetCurrentScene())
 		{
-			currentScene->Update();
+			currentScene->Update(deltaTime);
 		}
 	}
 
 	// シーン遷移中なら状態を更新する
 	UpdateTransition();
+}
+
+void SceneManager::PostPhysicsUpdate()
+{
+	// 通常時だけ物理更新後の処理を実行する。
+	if (m_transitionState == TransitionState::Idle)
+	{
+		if (IScene* currentScene = GetCurrentScene())
+		{
+			currentScene->PostPhysicsUpdate();
+		}
+	}
 }
 
 void SceneManager::Render(RenderContext& renderContext)

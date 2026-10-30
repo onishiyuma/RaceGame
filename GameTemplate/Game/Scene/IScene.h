@@ -114,13 +114,25 @@ public:
 	/// シーンを更新する。
 	/// 中断中は更新しない。
 	/// </summary>
-	void Update()
+	void Update(float deltaTime)
 	{
 		if (m_state != State::Active) {
 			return;
 		}
 
-		OnUpdate();
+		OnUpdate(deltaTime);
+	}
+
+	/// <summary>
+	/// 物理処理後に動くアップデート
+	/// </summary>
+	void PostPhysicsUpdate()
+	{
+		if (m_state != State::Active) {
+			return;
+		}
+
+		OnPostPhysicsUpdate();
 	}
 
 	/// <summary>
@@ -243,7 +255,9 @@ protected:
 	/// </summary>
 	virtual void OnResume() {}
 
-	virtual void OnUpdate() = 0;
+	virtual void OnUpdate(float deltaTime) = 0;
+
+	virtual void OnPostPhysicsUpdate() {}
 
 	virtual void OnRender(RenderContext& renderContext) = 0;
 

@@ -106,7 +106,9 @@ const Car* CarManager::FindCar(const std::string& instanceId)
 	return nullptr;
 }
 
-void CarManager::Update(const std::unordered_map<std::string, CarInput>& inputs)
+void CarManager::Update(
+	const std::unordered_map<std::string,
+	CarInput>& inputs, float deltaTime)
 {
 	const CarInput neutralInput{};
 
@@ -120,7 +122,15 @@ void CarManager::Update(const std::unordered_map<std::string, CarInput>& inputs)
 			it != inputs.end() ? it->second : neutralInput;
 
 		//インプットを渡して車を更新。
-		managed.car->Update(input);
+		managed.car->Update(input, deltaTime);
+	}
+}
+
+void CarManager::PostPhysicsUpdate()
+{
+	for (auto& managed : m_cars)
+	{
+		managed.car->PostPhysicsUpdate();
 	}
 }
 

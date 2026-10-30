@@ -6,6 +6,8 @@ bool Prop::OnInit(
 	const nlohmann::json& properties)
 {
 
+	m_stageModel->Update();
+
 	m_physicsStaticObject.CreateFromModel(
 		m_stageModel->GetModel(),
 		m_stageModel->GetModel().GetWorldMatrix(),

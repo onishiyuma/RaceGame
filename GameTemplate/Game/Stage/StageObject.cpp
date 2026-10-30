@@ -36,6 +36,9 @@ bool StageObject::Init(
 			m_scale
 		);
 
+		// 派生クラスがワールド行列を使用するため、先に更新する。
+		stageModel->UpdateTransform();
+
 		//モデルの初期化に成功してからメンバとして持つ。
 		m_stageModel = std::move(stageModel);
 	}
@@ -96,4 +99,7 @@ void StageObject::UpdateModelTransform()
 		m_rotation,
 		m_scale
 	);
+
+	// 変更後の位置・回転・拡大率をワールド行列に反映する。
+	m_stageModel->UpdateTransform();
 }

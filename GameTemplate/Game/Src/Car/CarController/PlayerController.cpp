@@ -7,10 +7,8 @@ PlayerController::PlayerController(GamePad& gamePad)
 	: m_gamePad(gamePad)
 {}
 
-CarInput PlayerController::GetInput(const Car& car)
+CarInput PlayerController::GetInput()
 {
-	(void)car;
-
 	CarInput input{};
 
 	// 左スティックでハンドルを操作する。

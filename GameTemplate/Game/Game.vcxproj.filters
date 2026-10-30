@@ -13,6 +13,24 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{6c597d8f-ec95-48f7-b2c6-510a3ccb5f75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Stage\Object">
+      <UniqueIdentifier>{774ec56d-dc6e-4661-9d78-03caf67a4989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Ui">
+      <UniqueIdentifier>{e9a8e0d8-b1c3-4c2e-a504-350b36443c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{0888926f-d620-4400-a220-99431cc467d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Car">
+      <UniqueIdentifier>{8b8afe17-8afe-4c59-a2c5-5819094e6bf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Race">
+      <UniqueIdentifier>{576d4f83-162c-418f-968e-27975ee75891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Car\CarController">
+      <UniqueIdentifier>{c51cb0d5-b112-4938-8f05-454e813d787c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -24,7 +42,6 @@
       <Filter>Stage\StageLoader</Filter>
     </ClCompile>
     <ClCompile Include="StageResourceLoader.cpp">
-      <Filter>Stage</Filter>
     </ClCompile>
     <ClCompile Include="Stage\StageBuilder.cpp">
       <Filter>Stage</Filter>
@@ -32,12 +49,13 @@
     <ClCompile Include="Stage\StageObject.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
-    <ClCompile Include="Stage\StageObjectFactory.cpp" />
-    <ClCompile Include="ModelInstance.cpp">
+    <ClCompile Include="Stage\StageObjectFactory.cpp">
       <Filter>Stage</Filter>
     </ClCompile>
+    <ClCompile Include="ModelInstance.cpp">
+    </ClCompile>
     <ClCompile Include="Stage\Object\Prop.cpp">
-      <Filter>Stage</Filter>
+      <Filter>Stage\Object</Filter>
     </ClCompile>
     <ClCompile Include="Stage\Stage.cpp">
       <Filter>Stage</Filter>
@@ -48,11 +66,20 @@
     <ClCompile Include="Scene\DebugScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Ui\UIAnimation.cpp" />
-    <ClCompile Include="Src\Ui\UIAnimationSequence.cpp" />
-    <ClCompile Include="Src\Ui\UIManager.cpp" />
+    <ClCompile Include="Src\Ui\UIAnimation.cpp">
+      <Filter>Src\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Ui\UIAnimationSequence.cpp">
+      <Filter>Src\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Ui\UIManager.cpp">
+      <Filter>Src\Ui</Filter>
+    </ClCompile>
     <ClCompile Include="AssetDatabase.cpp" />
     <ClCompile Include="ModelResourceLoader.cpp" />
+    <ClCompile Include="Src\Car\CarPhysics.cpp">
+      <Filter>Src\Car</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -69,7 +96,6 @@
       <Filter>Stage\StageLoader</Filter>
     </ClInclude>
     <ClInclude Include="StageResourceLoader.h">
-      <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\StageBuilder.h">
       <Filter>Stage</Filter>
@@ -77,15 +103,15 @@
     <ClInclude Include="Stage\StageObject.h">
       <Filter>Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Stage\StageObjectFactory.h" />
-    <ClInclude Include="ModelAssetDefinition.h">
+    <ClInclude Include="Stage\StageObjectFactory.h">
       <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelAssetDefinition.h">
     </ClInclude>
     <ClInclude Include="ModelInstance.h">
-      <Filter>Stage</Filter>
     </ClInclude>
     <ClInclude Include="Stage\Object\Prop.h">
-      <Filter>Stage</Filter>
+      <Filter>Stage\Object</Filter>
     </ClInclude>
     <ClInclude Include="Stage\Stage.h">
       <Filter>Stage</Filter>
@@ -99,42 +125,95 @@
     <ClInclude Include="Scene\DebugScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Ui\UIAnimation.h" />
-    <ClInclude Include="Src\Ui\UIAnimationSequence.h" />
-    <ClInclude Include="Src\Ui\UIManager.h" />
+    <ClInclude Include="Src\Ui\UIAnimation.h">
+      <Filter>Src\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Ui\UIAnimationSequence.h">
+      <Filter>Src\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Ui\UIManager.h">
+      <Filter>Src\Ui</Filter>
+    </ClInclude>
     <ClInclude Include="AssetDatabase.h" />
     <ClInclude Include="ModelResourceLoader.h" />
+    <ClInclude Include="Src\Car\CarPhysics.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
-    <ClInclude Include="Stage\Object\SpawnPoint.h" />
+    <ClCompile Include="Stage\Object\SpawnPoint.cpp">
+      <Filter>Stage\Object</Filter>
+    </ClCompile>
+    <ClInclude Include="Stage\Object\SpawnPoint.h">
+      <Filter>Stage\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Car\CarDefinition.h" />
-    <ClCompile Include="Src\Car\CarDatabase.cpp" />
-    <ClInclude Include="Src\Car\CarDatabase.h" />
-    <ClCompile Include="Src\Car\CarResourceLoader.cpp" />
-    <ClInclude Include="Src\Car\CarResourceLoader.h" />
+    <ClInclude Include="Src\Car\CarDefinition.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClCompile Include="Src\Car\CarDatabase.cpp">
+      <Filter>Src\Car</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Car\CarDatabase.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClCompile Include="Src\Car\CarResourceLoader.cpp">
+      <Filter>Src\Car</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Car\CarResourceLoader.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Car\Car.cpp" />
-    <ClInclude Include="Src\Car\Car.h" />
-    <ClCompile Include="Src\Car\CarVisual.cpp" />
-    <ClInclude Include="Src\Car\CarVisual.h" />
-    <ClCompile Include="Src\Car\CarManager.cpp" />
-    <ClInclude Include="Src\Car\CarManager.h" />
-    <ClInclude Include="Src\Car\CarInput.h" />
-    <ClInclude Include="Src\Car\CarPerformance.h" />
-    <ClInclude Include="Src\Car\CarPhysicsState.h" />
+    <ClCompile Include="Src\Car\Car.cpp">
+      <Filter>Src\Car</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Car\Car.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClCompile Include="Src\Car\CarVisual.cpp">
+      <Filter>Src\Car</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Car\CarVisual.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClCompile Include="Src\Car\CarManager.cpp">
+      <Filter>Src\Car</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Car\CarManager.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Car\CarInput.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Car\CarPerformance.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Car\CarPhysicsState.h">
+      <Filter>Src\Car</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Race\RaceEntryBuilder.cpp" />
-    <ClInclude Include="Src\Race\RaceEntryBuilder.h" />
-    <ClInclude Include="Src\Race\RaceEntryDefinition.h" />
+    <ClCompile Include="Src\Race\RaceEntryBuilder.cpp">
+      <Filter>Src\Race</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Race\RaceEntryBuilder.h">
+      <Filter>Src\Race</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Race\RaceEntryDefinition.h">
+      <Filter>Src\Race</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Car\CarController\ICarController.h" />
-    <ClCompile Include="Src\Car\CarController\PlayerController.cpp" />
-    <ClInclude Include="Src\Car\CarController\PlayerController.h" />
+    <ClInclude Include="Src\Car\CarController\ICarController.h">
+      <Filter>Src\Car\CarController</Filter>
+    </ClInclude>
+    <ClCompile Include="Src\Car\CarController\PlayerController.cpp">
+      <Filter>Src\Car\CarController</Filter>
+    </ClCompile>
+    <ClInclude Include="Src\Car\CarController\PlayerController.h">
+      <Filter>Src\Car\CarController</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
