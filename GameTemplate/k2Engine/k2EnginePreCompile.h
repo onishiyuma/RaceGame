@@ -17,3 +17,4 @@ using namespace nsK2EngineLow;
 #include "graphics/light/SceneLight.h"
 #include "nature/SkyCube.h"
 #include "Level3DRender/Level3DRender.h"
+#include "time/DelayTime.h"
