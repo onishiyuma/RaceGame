@@ -82,6 +82,15 @@ public:/*メンバ関数。*/
 		return m_isReverse;
 	}
 
+	/**
+	 * @brief アニメーションさせるスプライトの取得・
+	 * @return アニメーションさせるスプライト。
+	 */
+	SpriteRender* GetRender() const
+	{
+		return m_render;
+	}
+
 protected:/*メンバ変数。*/
 	SpriteRender* m_render = nullptr;/*アニメーションさせるスプライト。*/
 	float m_elapsedTime = 0.0f;/*経過した割合。*/
@@ -89,6 +98,7 @@ protected:/*メンバ変数。*/
 	float m_playSpeed = 1.0f;/*アニメーションの再生速度。*/
 	float m_startDelayTime = 0.0f;/*アニメーションを開始する前の遅延時間。*/
 	float m_endDelayTime = 0.0f;/*アニメーションを終了した後の遅延時間。*/
+	float m_endDeleyTimeMax = 0.0f;/*アニメーションを終了した後の最大遅延時間。*/
 	EnAnimationStep m_currentStep = enAnimationStep_Min;/*現在のステップ。*/
 	bool m_isLoop = false;/*ループするか ?*/
 	bool m_isEnd = false;/*アニメーションの再生終了したか？*/
@@ -167,6 +177,7 @@ public:
 	inline Derived& SetEndDelayTime(const float endDelayTime)
 	{
 		m_endDelayTime = endDelayTime;
+		m_endDeleyTimeMax = m_endDelayTime;
 		return static_cast<Derived&>(*this);;
 	}
 };

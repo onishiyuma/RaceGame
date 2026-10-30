@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -229,9 +229,12 @@
     <ClCompile Include="AssetDatabase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelResourceLoader.cpp" />
+    <ClCompile Include="Result.cpp" />
     <ClCompile Include="Scene\DebugScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Car\CarPhysics.cpp" />
+    <ClCompile Include="Src\Fade\FadeManager.cpp" />
+    <ClCompile Include="Src\Ui\LoadingUI.cpp" />
     <ClCompile Include="Src\Ui\UIAnimation.cpp" />
     <ClCompile Include="Src\Ui\UIAnimationSequence.cpp" />
     <ClCompile Include="Src\Ui\UIManager.cpp" />
@@ -249,14 +252,18 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
+    <ClCompile Include="Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetDatabase.h" />
     <ClInclude Include="ModelResourceLoader.h" />
+    <ClInclude Include="Result.h" />
     <ClInclude Include="Scene\DebugScene.h" />
     <ClInclude Include="Scene\IScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Src\Car\CarPhysics.h" />
+    <ClInclude Include="Src\Fade\FadeManager.h" />
+    <ClInclude Include="Src\Ui\LoadingUI.h" />
     <ClInclude Include="Src\Ui\UIAnimation.h" />
     <ClInclude Include="Src\Ui\UIAnimationSequence.h" />
     <ClInclude Include="Src\Ui\UIManager.h" />
@@ -273,6 +280,7 @@
     <ClInclude Include="Stage\StageObjectFactory.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h" />
+    <ClInclude Include="Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\k2Engine\k2Engine.vcxproj">

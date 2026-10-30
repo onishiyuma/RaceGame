@@ -18,3 +18,5 @@ extern K2Engine* g_k2Engine;
 #include "Src/Ui/UIManager.h"
 #include "Src/Ui/UIAnimation.h"
 #include "Src/Ui/UIAnimationSequence.h"
+#include "Src/Fade/FadeManager.h"
+#include "Src/Ui/LoadingUI.h"

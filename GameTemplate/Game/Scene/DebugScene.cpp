@@ -188,6 +188,7 @@ bool DebugScene::OnInit()
 
 	}
 
+	FadeManager::GetInstance()->ChangeFade(FadeManager::enFade_In, 1.5f);
 	return true;
 }
 
