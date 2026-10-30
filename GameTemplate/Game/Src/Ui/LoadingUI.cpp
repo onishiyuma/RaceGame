@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "LoadingManager.h"
+#include "LoadingUI.h"
 
 namespace
 {
@@ -10,10 +10,10 @@ namespace
 	const float VIBRATION_ANIMATION_END_TIME = 0.1f;/*振動アニメーションの終了遅延時間。*/
 }
 
-LoadingManager* LoadingManager::m_instance = nullptr;/*シングルトンインスタンスの初期化。*/
+LoadingUI* LoadingUI::m_instance = nullptr;/*シングルトンインスタンスの初期化。*/
 
 /*開始処理。*/
-bool LoadingManager::Start()
+bool LoadingUI::Start()
 {
 	/*背景の初期化。*/
 	m_backGround.Init("Assets/UI/Load/loadingBack.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
@@ -35,7 +35,7 @@ bool LoadingManager::Start()
 }
 
 /*更新処理。*/
-void LoadingManager::Update()
+void LoadingUI::Update()
 {
 	/*スプライトが透明のときは処理しない。*/
 	if (m_loadingTire.GetMulColor().a <= 0.0f) { return; }
@@ -48,7 +48,7 @@ void LoadingManager::Update()
 }
 
 /*描画処理。*/
-void LoadingManager::Render(RenderContext& rc)
+void LoadingUI::Render(RenderContext& rc)
 {
 	/*スプライトが透明のときは描画しない。*/
 	if (m_loadingTire.GetMulColor().a <= 0.0f) { return; }
