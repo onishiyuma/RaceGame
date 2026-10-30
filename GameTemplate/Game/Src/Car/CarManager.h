@@ -44,8 +44,11 @@ public:
 	/// </summary>
 	/// <param name="inputs"></param>
 	void Update(
-		const std::unordered_map<std::string, CarInput>& inputs
+		const std::unordered_map<std::string, CarInput>& inputs,
+		float deltaTime
 	);
+
+	void PostPhysicsUpdate();
 
 	void Draw(RenderContext& rc);
 

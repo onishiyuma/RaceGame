@@ -45,6 +45,11 @@ public:
 		m_modelRender.Update();
 	}
 
+	void UpdateTransform()
+	{
+		m_modelRender.UpdateTransform();
+	}
+
 	void Draw(RenderContext& rc)
 	{
 		m_modelRender.Draw(rc);

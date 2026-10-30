@@ -33,11 +33,15 @@ protected:
 	/// デバッグカメラを設定する。
 	/// </summary>
 	void OnActivate() override;
+	void OnDeactivate() override;
 
 	/// <summary>
 	/// デバッグカメラとステージを更新する。
 	/// </summary>
-	void OnUpdate() override;
+	void OnUpdate(float deltaTime) override;
+
+
+	void OnPostPhysicsUpdate() override;
 
 	/// <summary>
 	/// ステージを描画する。
@@ -56,6 +60,7 @@ private:
 	void UpdateDebugCamera();
 
 private:
+	Vector3 m_previousGravity = Vector3::Zero;
 	AssetDatabase m_assetDatabase;
 	CarDatabase m_carDatabase;
 	StageDefinition m_stageDefinition;

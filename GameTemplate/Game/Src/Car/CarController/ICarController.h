@@ -7,5 +7,5 @@ class ICarController
 public:
 	virtual ~ICarController() = default;
 
-	virtual CarInput GetInput(const Car& car) = 0;
+	virtual CarInput GetInput() = 0;
 };

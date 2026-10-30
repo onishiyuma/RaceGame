@@ -13,7 +13,7 @@ public:
 	/// <summary>
 	/// プレイヤーの操作入力を取得する。
 	/// </summary>
-	CarInput GetInput(const Car& car) override;
+	CarInput GetInput() override;
 
 private:
 	GamePad& m_gamePad;

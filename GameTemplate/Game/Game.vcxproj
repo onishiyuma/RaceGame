@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -232,6 +232,7 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Scene\DebugScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Src\Car\CarPhysics.cpp" />
     <ClCompile Include="Src\Fade\FadeManager.cpp" />
     <ClCompile Include="Src\Ui\LoadingUI.cpp" />
     <ClCompile Include="Src\Ui\UIAnimation.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="Scene\DebugScene.h" />
     <ClInclude Include="Scene\IScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Src\Car\CarPhysics.h" />
     <ClInclude Include="Src\Fade\FadeManager.h" />
     <ClInclude Include="Src\Ui\LoadingUI.h" />
     <ClInclude Include="Src\Ui\UIAnimation.h" />

@@ -30,7 +30,7 @@ bool TitleScene::OnInit()
 	return true;
 }
 
-void TitleScene::OnUpdate()
+void TitleScene::OnUpdate(float deltaTime)
 {
 	/*ƒ[ƒh‚µ‚Ä‚¢‚éê‡‚Íˆ—‚µ‚È‚¢B*/
 	if (LoadingUI::GetInstance()->IsLoading())

@@ -30,7 +30,7 @@ namespace nsK2EngineLow {
 					return true;
 				}
 				return false;
-			});
+				});
 		}
 
 		for (auto& goList : m_gameObjectListArray) {
@@ -45,8 +45,17 @@ namespace nsK2EngineLow {
 				go->UpdateWrapper();
 			}
 		}
+
+		//TODO:ポーズ中とかでもシーン側で物理演算を止めれないから、どうにかしたい。
 		//物理エンジンのアップデートを呼び出す。
 		PhysicsWorld::GetInstance()->Update(1.0f / 60.0f);
+
+		// 物理更新後の処理を実行する。
+		for (auto& goList : m_gameObjectListArray) {
+			for (auto& go : goList) {
+				go->PostPhysicsUpdateWrapper();
+			}
+		}
 	}
 	void GameObjectManager::ExecuteRender(RenderContext& rc)
 	{

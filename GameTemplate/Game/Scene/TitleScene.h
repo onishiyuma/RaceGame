@@ -16,7 +16,7 @@ public:
 public:
 	bool OnLoad() override;
 	bool OnInit() override;
-	void OnUpdate() override;
+	void OnUpdate(float deltaTime) override;
 	void OnRender(RenderContext& rc) override {};
 	void OnUnload() override {};
 

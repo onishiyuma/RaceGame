@@ -32,6 +32,8 @@ public:
 
 	void Update() override;
 
+	void PostPhysicsUpdate() override;
+
 	void Render(RenderContext& renderContext) override;
 
 	/// <summary>

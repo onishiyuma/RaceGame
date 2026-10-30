@@ -26,6 +26,8 @@ bool StageBuilder::Build(
 			// 失敗したオブジェクトだけスキップして、
 			// 他のオブジェクトの構築は続行する。
 
+			//TODO：ステージのモデルを正常に出せるようになったらファルスを吐くように変えとく。
+
 			std::string errorMessage = "StageObject creation failed. type: " + objectDef.type;
 
 			if (!objectDef.assetId.empty())

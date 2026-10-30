@@ -67,14 +67,14 @@ namespace nsK2EngineLow {
 		psoDesc.PS = CD3DX12_SHADER_BYTECODE(m_Pshader.GetCompiledBlob());
 		psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
 		psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
-		psoDesc.DepthStencilState.DepthEnable = TRUE;
-		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
+		psoDesc.DepthStencilState.DepthEnable = FALSE;
+		psoDesc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
 		psoDesc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;
 		psoDesc.DepthStencilState.StencilEnable = FALSE;
 		psoDesc.SampleMask = UINT_MAX;
 		//psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE;
-		psoDesc.NumRenderTargets = 3;
+		psoDesc.NumRenderTargets = 1;
 		psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;		//アルベドカラー出力用。
 		psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 		psoDesc.SampleDesc.Count = 1;
@@ -90,8 +90,8 @@ namespace nsK2EngineLow {
 	void DebugWireframe::InitIndexBuffer()
 	{
 		//インデックスバッファの初期化。
-		m_indexBuffer.Init(sizeof(std::uint16_t) * MAX_VERTEX, sizeof(std::uint16_t));
-		static std::uint16_t indices[MAX_VERTEX];
+		m_indexBuffer.Init(sizeof(std::uint32_t) * MAX_VERTEX, sizeof(std::uint32_t));
+		static std::uint32_t indices[MAX_VERTEX];
 		for (int i = 0; i < MAX_VERTEX; i++) {
 			indices[i] = i;
 		}
