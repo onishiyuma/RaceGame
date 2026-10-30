@@ -30,6 +30,8 @@ bool SceneManager::Init(std::unique_ptr<IScene> firstScene)
 
 	if (IsTransitioning())return false;
 
+	firstScene->SetSceneManager(this);
+
 	m_nextScene = std::move(firstScene);
 	m_requestType = RequestType::Change;
 

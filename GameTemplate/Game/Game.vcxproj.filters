@@ -55,6 +55,8 @@
     <ClCompile Include="ModelResourceLoader.cpp" />
     <ClCompile Include="Src\Fade\FadeManager.cpp" />
     <ClCompile Include="Src\Load\LoadingManager.cpp" />
+    <ClCompile Include="Result.cpp" />
+    <ClCompile Include="Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -108,6 +110,8 @@
     <ClInclude Include="ModelResourceLoader.h" />
     <ClInclude Include="Src\Fade\FadeManager.h" />
     <ClInclude Include="Src\Load\LoadingManager.h" />
+    <ClInclude Include="Result.h" />
+    <ClInclude Include="Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
