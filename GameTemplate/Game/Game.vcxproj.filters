@@ -53,6 +53,7 @@
     <ClCompile Include="Src\Ui\UIManager.cpp" />
     <ClCompile Include="AssetDatabase.cpp" />
     <ClCompile Include="ModelResourceLoader.cpp" />
+    <ClCompile Include="Src\Fade\FadeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Src\Ui\UIManager.h" />
     <ClInclude Include="AssetDatabase.h" />
     <ClInclude Include="ModelResourceLoader.h" />
+    <ClInclude Include="Src\Fade\FadeManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stage\Object\SpawnPoint.cpp" />
