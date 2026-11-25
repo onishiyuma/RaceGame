@@ -79,7 +79,7 @@ void UIAnimationBase::Update()
 			}
 			else
 			{
-				m_elapsedTime = 1.0f;
+				m_elapsedTime = m_targetTime;
 			}
 
 			/*äÆóπÅB*/
@@ -98,7 +98,7 @@ void UIAnimationBase::Update()
 			if (m_isLoop)
 			{
 				m_currentStep = m_currentStep == enAnimationStep_Min ? enAnimationStep_Max : enAnimationStep_Min;
-				m_elapsedTime = 1.0f;
+				m_elapsedTime = m_targetTime;
 			}
 			else
 			{

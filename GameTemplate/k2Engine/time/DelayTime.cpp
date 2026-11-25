@@ -15,6 +15,7 @@ namespace nsK2Engine {
 
         //Œo‰ßŽžŠÔ‚ª’x‰„ŽžŠÔ‚ð’´‚¦‚½ê‡
         if (elapsedTime >= delayTime) {
+            m_stopWatch = Stopwatch();
             return true;
         }
 

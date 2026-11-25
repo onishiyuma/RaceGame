@@ -7,6 +7,7 @@
  * @date 2026/10/13。
  */
 
+class SoundOption;
 class TitleScene : public IScene
 {
 public:
@@ -55,9 +56,17 @@ private:/*メンバ関数。*/
 
 	void InitBButton();/*Bボタンの初期化。*/
 
+	void InitAnimation();/*アニメーションの初期化。*/
+
+	void InitScaleAnimation();/*拡大縮小させるアニメーションの初期化。*/
+
+	void InitDecisionAnimation();/*決定アニメーションの初期化。*/
+
 	void Title();/*タイトルシーン。*/
 
 	void Select();/*選択シーン。*/
+
+	void UpdateDecisionAnimation();/*決定アニメーションの更新処理。*/
 
 public:/*メンバ関数。*/
 	
@@ -78,8 +87,12 @@ private:/*メンバ変数。*/
 	SpriteRender m_frame;/*選択枠。*/
 	SpriteRender m_aButton;/*Aボタン。*/
 	SpriteRender m_bButton;/*Bボタン。*/
+	std::unique_ptr<ScaleUIAnimation> m_scaleAnimation;/*拡大縮小させるアニメーション。*/
+	std::unique_ptr<ScaleUIAnimation> m_decisionAnimation;/*決定アニメーション。*/
+	bool m_isDecision = false;/*決定したか？*/
 	EnScene m_currentScene = enScene_Title;/*現在のシーン。*/
 	EnSelect m_currentSelect = enSelect_Stage1;/*現在の選択。*/
+	SoundOption* m_soundOption;/*サウンド設定用のポインタ。*/
 	DelayTime m_delayTime;/*遅延時間。*/
 };
 

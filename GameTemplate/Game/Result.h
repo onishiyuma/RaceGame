@@ -1,4 +1,5 @@
 #pragma once
+#include <optional>
 #include "Scene/IScene.h"
 /**
  * @file Result.h。
@@ -92,17 +93,17 @@ public:/*列挙型。/
 private:/*メンバ関数。*/
 	void InitUI();/*UIの初期化。*/
 
-	void InitFrame(int rank);/*枠の初期化。*/
+	void InitFrame(PlayerData playerData);/*枠の初期化。*/
 
-	void InitPlayerIcon(PlayerData PlayerData);/*プレイヤーアイコンの初期化。*/
+	void InitPlayerIcon(PlayerData playerData);/*プレイヤーアイコンの初期化。*/
 
-	void InitRankIcon(int rank);/*ランクUIの初期化。*/
+	void InitRankIcon(PlayerData playerData);/*ランクアイコンの初期化。*/
 
-	void InitReslutBackGround();/*リザルト後の選択用の背景の初期化。*/
+	void InitSelectBackGround();/*リザルト後の選択用の背景の初期化。*/
 
-	void InitResultOption(int index);/*リザルト後の選択用の選択肢の初期化。*/
+	void InitSelectOption(int index);/*リザルト後の選択用の選択肢の初期化。*/
 
-	void InitResultFrame();/*リザルト後の選択用の枠の初期化。*/
+	void InitSelectFrame();/*リザルト後の選択用の枠の初期化。*/
 
 	void InitAnimation();/*アニメーションの初期化。*/
 
@@ -110,15 +111,37 @@ private:/*メンバ関数。*/
 
 	void InitAlphaAnimation(std::unique_ptr<SpriteRender>& targetSprite, int index);/*透明度を変えるアニメーションの初期化。*/
 
+	void InitScaleAnimation();/*拡大縮小させるアニメーションの初期化。*/
+
+	void InitDecisionAnimation();/*決定アニメーションの初期化。*/
+
 	void ChangeSlideAnimationData(std::unique_ptr<SpriteRender>& targetSprite, int index);/*スライドアニメーションに登録されている情報の切り替え。*/
 
 	void ChangeAlphaAnimationData(std::unique_ptr<SpriteRender>& targetSprite, int index);/*透明度を変えるアニメーションに登録されている情報の切り替え。*/
+
+	void DisplayPlayerOrNormalUI();/*プレイヤー側のUIと通常のUIの表示切り替え。*/
 
 	void UpdateSlide();/*スライドアニメーションの更新処理。*/
 
 	void UpdateAlpha();/*透明度を変えるアニメーションの更新処理。*/
 
+	void TransitionScene();/*シーンの切り替え。*/
+
+	void UpdateDirection();/*演出の更新処理。*/
+
+	void UpdateRankingDirection();/*ランキング用の演出の更新処理。*/
+
+	void UpdateSelectDirection();/*選択用の演出の更新処理。*/
+
+	void UpdateScaleAnimation();/*拡大縮小させるアニメーションの更新処理。*/
+
+	void UpdateDecisionAnimation();/*決定アニメーションの更新処理。*/
+
 	void Operation();/*プレイヤー側の操作。*/
+
+	void TriggerButtonA();/*Aボタンを押す。*/
+
+	void Select();/*選択。*/
 
 public:/*メンバ関数。*/
 
@@ -143,14 +166,19 @@ public:/*メンバ関数。*/
 
 private:/*メンバ変数。*/
 	std::vector<PlayerData> m_playerDatas;/*リザルトの表示に必要なプレイヤーのデータ。*/
-	std::vector<std::unique_ptr<SpriteRender>> m_frames;/*枠。*/
+	std::vector<std::unique_ptr<SpriteRender>> m_normalFrames;/*通常枠。*/
+	std::vector<std::unique_ptr<SpriteRender>> m_playerFrames;/*プレイヤー側の枠。*/
+	std::vector<std::unique_ptr<SpriteRender>> m_normalIcons;/*通常アイコン。*/
 	std::vector<std::unique_ptr<SpriteRender>> m_playerIcons;/*プレイヤーアイコン。*/
-	std::vector<std::unique_ptr<SpriteRender>> m_rankIcons;/*ランクアイコン。*/
+	std::vector<std::unique_ptr<SpriteRender>> m_normalRankIcons;/*通常ランクアイコン。*/
+	std::vector<std::unique_ptr<SpriteRender>> m_playerRankIcons;/*プレイヤーランクアイコン。*/
 	std::vector<std::unique_ptr<PositionUIAnimation>> m_slideAnimations;/*スライドさせるアニメーション。*/
 	std::vector<std::unique_ptr<AlphaUIAnimation>> m_alphaAnimations;/*透明度を変えるアニメーション。*/
-	SpriteRender m_resultBackGround;/*リザルト後の選択用の背景。*/
-	SpriteRender m_resultOption[enSelect_Num];/*選択肢。*/
-	SpriteRender m_resultFrame;/*リザルト後の選択用の枠。*/
+	std::unique_ptr<ScaleUIAnimation> m_scaleAnimation;/*拡大縮小させるアニメーション。*/
+	std::unique_ptr<ScaleUIAnimation> m_decisionAnimation;/*決定アニメーション。*/
+	SpriteRender m_selectBackGround;/*リザルト後の選択用の背景。*/
+	SpriteRender m_selectOption[enSelect_Num];/*選択肢。*/
+	SpriteRender m_selectFrame;/*リザルト後の選択用の枠。*/
 	bool m_isEndDirection = false;/*演出が終了したか？*/
 	bool m_isTriggerButtonA = false;/*Aボタンが押されたか？*/
 	EnDirection m_currentDirection = enDirection_Ranking;/*現在の演出。*/
@@ -159,33 +187,54 @@ private:/*メンバ変数。*/
 	DelayTime m_delayTime;/*遅延時間。*/
 
 private:/*スプライトのファイルパス。*/
-	std::string m_frameFilePath = "Assets/UI/result/ranking/rankNormalFrame.dds";/*枠。*/
+	std::string m_frameFilePath = "Assets/UI/result/ranking/rankNormalFrame.dds";/*枠のファイルパス。*/
+	std::string m_playerFrameFilePath = "Assets/UI/result/ranking/rankYellowFrame.dds";/*プレイヤー側の枠のファイルパス。*/
+
+	std::string m_normalIconFilePath[enPlayerIcon_Num] = {
+		"Assets/UI/result/name/result1P.dds",
+		"Assets/UI/result/name/result2P.dds",
+		"Assets/UI/result/name/resultCPU1.dds",
+		"Assets/UI/result/name/resultCPU2.dds",
+		"Assets/UI/result/name/resultCPU3.dds",
+		"Assets/UI/result/name/resultCPU4.dds",
+		"Assets/UI/result/name/resultCPU5.dds",
+		"Assets/UI/result/name/resultCPU6.dds"
+	};/*通常アイコンのファイルパス。*/
+	
 	std::string m_playerIconFilePath[enPlayerIcon_Num] = { 
-		"Assets/UI/result/ranking/result1P.dds",
-		"Assets/UI/result/ranking/result2P.dds",
-		"Assets/UI/result/ranking/resultCPU1.dds",
-		"Assets/UI/result/ranking/resultCPU2.dds",
-		"Assets/UI/result/ranking/resultCPU3.dds",
-		"Assets/UI/result/ranking/resultCPU4.dds",
-		"Assets/UI/result/ranking/resultCPU5.dds",
-		"Assets/UI/result/ranking/resultCPU6.dds",
+		"Assets/UI/result/name/result1P_Black.dds",
+		"Assets/UI/result/name/result2P_Black.dds"
 	};/*プレイヤーアイコンのファイルパス。*/
-	std::string m_rankIconFilePath[enRankIcon_Num] = { 
-		"Assets/UI/result/ranking/rankOne.dds",
-		"Assets/UI/result/ranking/rankTwo.dds",
-		"Assets/UI/result/ranking/rankThree.dds",
-		"Assets/UI/result/ranking/rankFour.dds",
-		"Assets/UI/result/ranking/rankFive.dds",
-		"Assets/UI/result/ranking/rankSix.dds",
-		"Assets/UI/result/ranking/rankSevem.dds",
-		"Assets/UI/result/ranking/rankEight.dds",
-		"Assets/UI/result/ranking/rankNine.dds"
+
+	std::string m_normalRankIconFilePath[enRankIcon_Num] = { 
+		"Assets/UI/result/number/rankOne.dds",
+		"Assets/UI/result/number/rankTwo.dds",
+		"Assets/UI/result/number/rankThree.dds",
+		"Assets/UI/result/number/rankFour.dds",
+		"Assets/UI/result/number/rankFive.dds",
+		"Assets/UI/result/number/rankSix.dds",
+		"Assets/UI/result/number/rankSeven.dds",
+		"Assets/UI/result/number/rankEight.dds",
+		"Assets/UI/result/number/rankNine.dds"
 	};/*ランクアイコンのファイルパス。*/
+
+	std::string m_playerRankIconFilePath[enRankIcon_Num] = { 
+		"Assets/UI/result/number/rankOneBlack.dds",
+		"Assets/UI/result/number/rankTwoBlack.dds",
+		"Assets/UI/result/number/rankThreeBlack.dds",
+		"Assets/UI/result/number/rankFourBlack.dds",
+		"Assets/UI/result/number/rankFiveBlack.dds",
+		"Assets/UI/result/number/rankSixBlack.dds",
+		"Assets/UI/result/number/rankSevenBlack.dds",
+		"Assets/UI/result/number/rankEightBlack.dds",
+		"Assets/UI/result/number/rankNineBlack.dds"
+	};/*プレイヤーランクアイコンのファイルパス。*/
+
 	std::string m_resultOptionFilePath[enSelect_Num] = {
 		"Assets/UI/result/select/resultPlayStart.dds",
 		"Assets/UI/result/select/resultSticker.dds",
 		"Assets/UI/result/select/resultStage.dds",
 		"Assets/UI/result/select/resultTitle.dds"
-	};
+	};/*選択肢のファイルパス。*/
 };
 
