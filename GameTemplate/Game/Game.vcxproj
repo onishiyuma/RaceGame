@@ -232,8 +232,10 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Scene\DebugScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="SoundOption.cpp" />
     <ClCompile Include="Src\Car\CarPhysics.cpp" />
     <ClCompile Include="Src\Fade\FadeManager.cpp" />
+    <ClCompile Include="Src\Sound\GameSoundEngine.cpp" />
     <ClCompile Include="Src\Ui\LoadingUI.cpp" />
     <ClCompile Include="Src\Ui\UIAnimation.cpp" />
     <ClCompile Include="Src\Ui\UIAnimationSequence.cpp" />
@@ -261,8 +263,12 @@
     <ClInclude Include="Scene\DebugScene.h" />
     <ClInclude Include="Scene\IScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="SoundOption.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="Src\Car\CarPhysics.h" />
     <ClInclude Include="Src\Fade\FadeManager.h" />
+    <ClInclude Include="Src\Sound\GameSoundEngine.h" />
     <ClInclude Include="Src\Ui\LoadingUI.h" />
     <ClInclude Include="Src\Ui\UIAnimation.h" />
     <ClInclude Include="Src\Ui\UIAnimationSequence.h" />

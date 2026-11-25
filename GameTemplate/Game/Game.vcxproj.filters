@@ -84,6 +84,8 @@
     <ClCompile Include="Src\Ui\LoadingUI.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
+    <ClCompile Include="SoundOption.cpp" />
+    <ClCompile Include="Src\Sound\GameSoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -147,6 +149,8 @@
     <ClInclude Include="Src\Ui\LoadingUI.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Scene\TitleScene.h" />
+    <ClInclude Include="SoundOption.h" />
+    <ClInclude Include="Src\Sound\GameSoundEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stage\Object\SpawnPoint.cpp">

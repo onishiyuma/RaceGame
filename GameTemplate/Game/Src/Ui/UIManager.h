@@ -32,6 +32,15 @@ public:/*メンバ関数。*/
 		m_uiList.at(order).push_back(ui);
 	}
 
+	template <typename T>
+	void AddUIs(T& uis)
+	{
+		for (auto& ui : uis)
+		{
+			AddUI(ui.get());
+		}
+	}
+
 	/**
 	 * @brief 描画しているUIの削除。
 	 * @param ui 描画しているUI。
@@ -43,8 +52,17 @@ public:/*メンバ関数。*/
 			if (it != uiList.end()) {
 				g_renderingEngine->DeleteRenderObject(ui);
 				uiList.erase(it);
-				break; // 削除が完了したらループを抜ける
+				break; /*削除が完了したらループを抜ける。*/
 			}
+		}
+	}
+
+	template <typename T>
+	void DeleteUIs(T& uis)
+	{
+		for (auto& ui : uis)
+		{
+			DeleteUI(ui.get());
 		}
 	}
 

@@ -31,6 +31,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	LoadingUI::CreateInstance();
 	FadeManager::GetInstance()->SetTargetFede(LoadingUI::GetInstance()->GetBackGround());
 	FadeManager::GetInstance()->SetTargetFede(LoadingUI::GetInstance()->GetLoadingTire());
+	GameSoundEngine::GetInstance()->CreateInstance();
+	GameSoundEngine::GetInstance()->Init();
 
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
@@ -44,6 +46,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 		LoadingUI::GetInstance()->Update();
 		LoadingUI::GetInstance()->Render(g_graphicsEngine->GetRenderContext());
+
+		GameSoundEngine::GetInstance()->Update();
 	}
 
 	K2Engine::DeleteInstance();
